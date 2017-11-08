@@ -71,10 +71,11 @@ void main()
    POSCNT = 0;
    MAXCNT  = 65536;
    de_Pos = 800;
-   setup_timer_2(T2_DIV_BY_16,255,1);// 244hz
-   setup_ccp1(CCP_PWM);
-   set_pwm1_duty(0);
-   setup_ccp2(CCP_PWM);
+   setup_timer_2(T2_DIV_BY_16,255,1);//tan so la 244hz
+   setup_ccp1(CCP_PWM);//che do pwm
+   set_pwm1_duty(0);//du ty la 0%
+   setup_ccp2(CCP_PWM);//che do pwm
+
    while(TRUE)
    {
       re_Pos = POSCNT/4;

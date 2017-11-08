@@ -1,16 +1,16 @@
-CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 08:03
+CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 08:22
 
                Filename:   C:\Users\Dung Phan\Documents\PID\main.lst
 
-               ROM used:   3248 bytes (20%)
-                           Largest free fragment is 13136
+               ROM used:   3246 bytes (20%)
+                           Largest free fragment is 13138
                RAM used:   18 (2%) at main() level
                            51 (7%) worst case
                Stack used: 5 locations
                Stack size: 31
 
 *
-0000:  GOTO   0C2E
+0000:  GOTO   0C28
 .................... #include <main.h> 
 .................... #include <18F4431.h> 
 .................... //////////// Standard Header file for the PIC18F4431 device //////////////// 
@@ -850,7 +850,7 @@ CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 08:03
 0A5A:  CLRF   01
 0A5C:  CLRF   02
 0A5E:  CLRF   03
-0A60:  GOTO   0B80 (RETURN)
+0A60:  GOTO   0B7A (RETURN)
 ....................  
 .................... #list 
 ....................  
@@ -5848,9 +5848,8 @@ CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 08:03
 .................... #define Kp        10 
 .................... #define Ki        0.1 
 .................... #define Kd        0.01 
-.................... #define PERIOD    2000 
 .................... #define max_pwm   1000 
-.................... #define timer2_value 0.05 
+.................... #define timer2_value 0.5 
 .................... signed int16 PID, new_err = 0, de_Pos=0, re_Pos=0,I=0,e=0,pwm=0; 
 ....................  
 .................... void xuatSo(int16 depos, int16 repos) 
@@ -6014,7 +6013,7 @@ CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 08:03
 04D0:  MOVLW  18
 04D2:  MOVWF  23
 04D4:  RCALL  02D2
-04D6:  GOTO   0CAA (RETURN)
+04D6:  GOTO   0CA8 (RETURN)
 .................... } 
 ....................  
 .................... void PID_Conf() 
@@ -6115,159 +6114,155 @@ CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 08:03
 0B62:  MOVFF  02,18
 0B66:  MOVFF  01,17
 0B6A:  MOVFF  00,16
-0B6E:  MOVLW  CD
-0B70:  MOVWF  1D
-0B72:  MOVLW  CC
-0B74:  MOVWF  1C
-0B76:  MOVLW  4C
-0B78:  MOVWF  1B
-0B7A:  MOVLW  7A
-0B7C:  MOVWF  1A
-0B7E:  BRA    0908
-0B80:  MOVFF  03,15
-0B84:  MOVFF  02,14
-0B88:  MOVFF  01,13
-0B8C:  MOVFF  00,12
-0B90:  MOVFF  05,17
-0B94:  MOVFF  04,16
-0B98:  RCALL  052C
-0B9A:  BCF    FD8.1
-0B9C:  MOVFF  03,19
-0BA0:  MOVFF  02,18
-0BA4:  MOVFF  01,17
-0BA8:  MOVFF  00,16
-0BAC:  MOVFF  15,1D
-0BB0:  MOVFF  14,1C
-0BB4:  MOVFF  13,1B
-0BB8:  MOVFF  12,1A
-0BBC:  RCALL  0666
-0BBE:  MOVFF  03,19
-0BC2:  MOVFF  02,18
-0BC6:  MOVFF  01,17
-0BCA:  MOVFF  00,16
-0BCE:  RCALL  08D0
-0BD0:  MOVFF  02,05
-0BD4:  MOVFF  01,04
+0B6E:  CLRF   1D
+0B70:  CLRF   1C
+0B72:  CLRF   1B
+0B74:  MOVLW  7E
+0B76:  MOVWF  1A
+0B78:  BRA    0908
+0B7A:  MOVFF  03,15
+0B7E:  MOVFF  02,14
+0B82:  MOVFF  01,13
+0B86:  MOVFF  00,12
+0B8A:  MOVFF  05,17
+0B8E:  MOVFF  04,16
+0B92:  RCALL  052C
+0B94:  BCF    FD8.1
+0B96:  MOVFF  03,19
+0B9A:  MOVFF  02,18
+0B9E:  MOVFF  01,17
+0BA2:  MOVFF  00,16
+0BA6:  MOVFF  15,1D
+0BAA:  MOVFF  14,1C
+0BAE:  MOVFF  13,1B
+0BB2:  MOVFF  12,1A
+0BB6:  RCALL  0666
+0BB8:  MOVFF  03,19
+0BBC:  MOVFF  02,18
+0BC0:  MOVFF  01,17
+0BC4:  MOVFF  00,16
+0BC8:  RCALL  08D0
+0BCA:  MOVFF  02,05
+0BCE:  MOVFF  01,04
 ....................    PWM = PID; 
-0BD8:  MOVFF  05,11
-0BDC:  MOVFF  04,10
+0BD2:  MOVFF  05,11
+0BD6:  MOVFF  04,10
 ....................    if (PWM > max_pwm) PWM = max_pwm; 
-0BE0:  BTFSC  11.7
-0BE2:  BRA    0BFC
-0BE4:  MOVF   11,W
-0BE6:  SUBLW  02
-0BE8:  BC    0BFC
-0BEA:  XORLW  FF
-0BEC:  BNZ   0BF4
-0BEE:  MOVF   10,W
-0BF0:  SUBLW  E8
-0BF2:  BC    0BFC
-0BF4:  MOVLW  03
-0BF6:  MOVWF  11
-0BF8:  MOVLW  E8
-0BFA:  MOVWF  10
+0BDA:  BTFSC  11.7
+0BDC:  BRA    0BF6
+0BDE:  MOVF   11,W
+0BE0:  SUBLW  02
+0BE2:  BC    0BF6
+0BE4:  XORLW  FF
+0BE6:  BNZ   0BEE
+0BE8:  MOVF   10,W
+0BEA:  SUBLW  E8
+0BEC:  BC    0BF6
+0BEE:  MOVLW  03
+0BF0:  MOVWF  11
+0BF2:  MOVLW  E8
+0BF4:  MOVWF  10
 ....................    e = new_err; 
-0BFC:  MOVFF  07,0F
-0C00:  MOVFF  06,0E
+0BF6:  MOVFF  07,0F
+0BFA:  MOVFF  06,0E
 ....................    set_pwm1_duty((int16)PWM); 
-0C04:  MOVFF  11,02
-0C08:  MOVFF  10,01
-0C0C:  RRCF   02,F
-0C0E:  RRCF   01,F
-0C10:  RRCF   02,F
-0C12:  RRCF   01,F
+0BFE:  MOVFF  11,02
+0C02:  MOVFF  10,01
+0C06:  RRCF   02,F
+0C08:  RRCF   01,F
+0C0A:  RRCF   02,F
+0C0C:  RRCF   01,F
+0C0E:  RRCF   02,F
+0C10:  MOVFF  01,FBE
 0C14:  RRCF   02,F
-0C16:  MOVFF  01,FBE
-0C1A:  RRCF   02,F
-0C1C:  RRCF   02,W
-0C1E:  ANDLW  30
-0C20:  MOVWF  00
-0C22:  MOVF   FBD,W
-0C24:  ANDLW  CF
-0C26:  IORWF  00,W
-0C28:  MOVWF  FBD
-0C2A:  GOTO   0CAC (RETURN)
+0C16:  RRCF   02,W
+0C18:  ANDLW  30
+0C1A:  MOVWF  00
+0C1C:  MOVF   FBD,W
+0C1E:  ANDLW  CF
+0C20:  IORWF  00,W
+0C22:  MOVWF  FBD
+0C24:  GOTO   0CAA (RETURN)
 .................... } 
 ....................  
 .................... void main() 
-0C2E:  CLRF   FF8
-0C30:  BCF    FD0.7
-0C32:  CLRF   07
-0C34:  CLRF   06
-0C36:  CLRF   09
-0C38:  CLRF   08
-0C3A:  CLRF   0B
-0C3C:  CLRF   0A
-0C3E:  CLRF   0D
-0C40:  CLRF   0C
-0C42:  CLRF   0F
-0C44:  CLRF   0E
-0C46:  CLRF   11
-0C48:  CLRF   10
-0C4A:  BCF    FB9.0
-0C4C:  BCF    FC1.6
-0C4E:  BCF    FC1.7
-0C50:  MOVLW  00
-0C52:  MOVWF  FB8
+0C28:  CLRF   FF8
+0C2A:  BCF    FD0.7
+0C2C:  CLRF   07
+0C2E:  CLRF   06
+0C30:  CLRF   09
+0C32:  CLRF   08
+0C34:  CLRF   0B
+0C36:  CLRF   0A
+0C38:  CLRF   0D
+0C3A:  CLRF   0C
+0C3C:  CLRF   0F
+0C3E:  CLRF   0E
+0C40:  CLRF   11
+0C42:  CLRF   10
+0C44:  BCF    FB9.0
+0C46:  BCF    FC1.6
+0C48:  BCF    FC1.7
+0C4A:  MOVLW  00
+0C4C:  MOVWF  FB8
 .................... { 
-....................    QEICON   = 0b10101000; 
-0C54:  MOVLW  A8
-0C56:  MOVWF  FB6
-....................    DFLTCON  = 0x00010110; 
-0C58:  MOVLW  10
-0C5A:  MOVWF  F60
+....................    QEICON   = 0x18; 
+0C4E:  MOVLW  18
+0C50:  MOVWF  FB6
 ....................    POSCNT = 0; 
-0C5C:  CLRF   F67
-0C5E:  CLRF   F66
+0C52:  CLRF   F67
+0C54:  CLRF   F66
 ....................    MAXCNT  = 65536; 
-0C60:  CLRF   F65
-0C62:  CLRF   F64
+0C56:  CLRF   F65
+0C58:  CLRF   F64
 ....................    de_Pos = 800; 
-0C64:  MOVLW  03
-0C66:  MOVWF  09
-0C68:  MOVLW  20
-0C6A:  MOVWF  08
-....................    setup_timer_2(T2_DIV_BY_16,255,1);//tan so la 244hz 
-0C6C:  MOVLW  00
-0C6E:  IORLW  06
-0C70:  MOVWF  FCA
-0C72:  MOVLW  FF
-0C74:  MOVWF  FCB
-....................    setup_ccp1(CCP_PWM);//che do pwm 
-0C76:  BCF    F94.2
-0C78:  BCF    F8B.2
-0C7A:  MOVLW  0C
-0C7C:  MOVWF  FBD
-....................    set_pwm1_duty(0);//du ty la 0% 
-0C7E:  CLRF   FBE
-....................    setup_ccp2(CCP_PWM);//che do pwm 
-0C80:  BCF    F94.1
-0C82:  BCF    F8B.1
-0C84:  MOVWF  FBA
-....................    set_pwm2_duty(0);    
-0C86:  CLRF   FBB
+0C5A:  MOVLW  03
+0C5C:  MOVWF  09
+0C5E:  MOVLW  20
+0C60:  MOVWF  08
+....................    setup_timer_2(T2_DIV_BY_16,255,1);// 244hz 
+0C62:  MOVLW  00
+0C64:  IORLW  06
+0C66:  MOVWF  FCA
+0C68:  MOVLW  FF
+0C6A:  MOVWF  FCB
+....................    setup_ccp1(CCP_PWM); 
+0C6C:  BCF    F94.2
+0C6E:  BCF    F8B.2
+0C70:  MOVLW  0C
+0C72:  MOVWF  FBD
+....................    set_pwm1_duty(0); 
+0C74:  CLRF   FBE
+....................    setup_ccp2(CCP_PWM); 
+0C76:  BCF    F94.1
+0C78:  BCF    F8B.1
+0C7A:  MOVWF  FBA
 ....................    while(TRUE) 
 ....................    { 
-....................       re_Pos = POSCNT/2; 
-0C88:  BCF    FD8.0
-0C8A:  RRCF   F67,W
-0C8C:  MOVWF  03
-0C8E:  RRCF   F66,W
-0C90:  MOVWF  0A
-0C92:  MOVFF  03,0B
+....................       re_Pos = POSCNT/4; 
+0C7C:  RRCF   F67,W
+0C7E:  MOVWF  03
+0C80:  RRCF   F66,W
+0C82:  MOVWF  02
+0C84:  RRCF   03,F
+0C86:  RRCF   02,F
+0C88:  MOVLW  3F
+0C8A:  ANDWF  03,F
+0C8C:  MOVFF  02,0A
+0C90:  MOVFF  03,0B
 ....................       xuatSo(de_Pos, re_Pos); 
-0C96:  MOVFF  09,13
-0C9A:  MOVFF  08,12
-0C9E:  MOVFF  0B,15
-0CA2:  MOVFF  0A,14
-0CA6:  GOTO   037C
+0C94:  MOVFF  09,13
+0C98:  MOVFF  08,12
+0C9C:  MOVFF  0B,15
+0CA0:  MOVFF  0A,14
+0CA4:  GOTO   037C
 ....................       PID_Conf(); 
-0CAA:  BRA    0A64
-0CAC:  BRA    0C88
+0CA8:  BRA    0A64
+0CAA:  BRA    0C7C
 ....................    } 
 .................... } 
 ....................  
-0CAE:  SLEEP 
+0CAC:  SLEEP 
 ....................  
 ....................  
 ....................  

@@ -15,8 +15,9 @@ int16    MAXCNT;
 #define Kp        10
 #define Ki        0.1
 #define Kd        0.01
+#define PERIOD    2000
 #define max_pwm   1000
-#define timer2_value 0.5
+#define timer2_value 0.05
 signed int16 PID, new_err = 0, de_Pos=0, re_Pos=0,I=0,e=0,pwm=0;
 
 void xuatSo(int16 depos, int16 repos)
@@ -67,17 +68,19 @@ void PID_Conf()
 
 void main()
 {
-   QEICON   = 0x18;
+   QEICON   = 0b10101000;
+   DFLTCON  = 0x00010110;
    POSCNT = 0;
    MAXCNT  = 65536;
    de_Pos = 800;
-   setup_timer_2(T2_DIV_BY_16,255,1);// 244hz
-   setup_ccp1(CCP_PWM);
-   set_pwm1_duty(0);
-   setup_ccp2(CCP_PWM);
+   setup_timer_2(T2_DIV_BY_16,255,1);//tan so la 244hz
+   setup_ccp1(CCP_PWM);//che do pwm
+   set_pwm1_duty(0);//du ty la 0%
+   setup_ccp2(CCP_PWM);//che do pwm
+   set_pwm2_duty(0);   
    while(TRUE)
    {
-      re_Pos = POSCNT/4;
+      re_Pos = POSCNT/2;
       xuatSo(de_Pos, re_Pos);
       PID_Conf();
    }
