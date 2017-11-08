@@ -1,17 +1,3 @@
-//
-//
-//
-//
-// Lap trinh DK Encoder = PID
-// Nhap so tu Keypad roi nhan # de bat dau chay.
-//
-//
-//
-//
-//
-//
-//
-//
 #include <main.h>
 #include <lcd.h>
 #include <math.h>
