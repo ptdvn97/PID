@@ -1,7 +1,8 @@
-D G "__PCH__" 0 91 ""5.025""
-D G "__DEVICE__" 0 91 "4431"
-D G "__DATE__" 0 91 ""08-Nov-17""
-D G "__TIME__" 0 91 ""09:20:49"" "Standard Header file for the PIC18F4431 device ////////////////"
+D G "timer2_value" 0 19 "0.5"
+D G "__PCH__" 0 82 ""5.025""
+D G "__DEVICE__" 0 82 "4431"
+D G "__DATE__" 0 82 ""08-Nov-17""
+D G "__TIME__" 0 82 ""13:45:15"" "Standard Header file for the PIC18F4431 device ////////////////"
 c L "set_tris_a" 2 3 6 "FUNCTION"
 v L "value" 2 44 "int8" `54 
 f B "set_tris_a" 2 44 "void(int8 value)" `53 
@@ -1267,28 +1268,23 @@ D G "Ki" 0 16 "0.1"
 D G "Kd" 0 17 "0.01"
 D G "max_pwm" 0 18 "1000"
 D G "timer2_value" 0 19 "0.5"
-V G "PID" 0 20 "sint16" `845 
-V G "new_err" 0 20 "sint16" `846 
-V G "de_Pos" 0 20 "sint16" `847 
-V G "re_Pos" 0 20 "sint16" `848 
-V G "i" 0 20 "sint16" `849 
-V G "e" 0 20 "sint16" `850 
-V G "pwm" 0 20 "sint16" `851 
-V L "depos" 0 22 "int16" `853 
-V L "repos" 0 22 "int16" `854 
-F G "xuatSo" 0 23 "void(int16 depos,int16 repos)" `852 
-V L "biens" 0 25 "int16" `855 
-V L "as" 0 26 "int8" `856 
-V L "bs" 0 26 "int8" `857 
-V L "cs" 0 26 "int8" `858 
-V L "ds" 0 26 "int8" `859 
-V L "bien" 0 40 "int16" `872 
-V L "a" 0 41 "int8" `873 
-V L "b" 0 41 "int8" `874 
-V L "c" 0 41 "int8" `875 
-V L "d" 0 41 "int8" `876 
-F G "PID_Conf" 0 56 "void()" `878 
-F G "MAIN" 0 69 "void()" `882 
+V G "PID" 0 21 "sint16" `845 
+V G "new_err" 0 21 "sint16" `846 
+V G "de_Pos" 0 21 "sint16" `847 
+V G "re_Pos" 0 21 "sint16" `848 
+V G "i" 0 21 "sint16" `849 
+V G "e" 0 21 "sint16" `850 
+V G "pwm" 0 21 "sint16" `851 
+V G "ini_vl" 0 22 "int8[4]" `852 
+C L "xuatSo" 0 4 1 "FUNCTION"
+V L "so" 0 24 "int16" `854 
+F G "xuatSo" 0 25 "int16(int16 so)" `853 
+V L "bien" 0 26 "int16" `855 
+C L "xuatSo" 0 4 1 "FUNCTION"
+C L "xuatSo" 0 4 1 "FUNCTION"
+C L "xuatSo" 0 4 1 "FUNCTION"
+F G "PID_Conf" 0 42 "void()" `859 
+F G "MAIN" 0 55 "void()" `863 
 C L "MAIN" 0 4 1 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0

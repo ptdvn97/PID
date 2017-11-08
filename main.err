@@ -1,1 +1,4 @@
-*** Error 51 "main.c" Line 70(20,21): A numeric expression must appear here
+>>> Warning 208 "main.c" Line 24(7,13): Function not void and does not return a value  xuatSo
+      Memory usage:   ROM=20%      RAM=3% - 5%
+      0 Errors,  1 Warnings.
+Build Successful.
