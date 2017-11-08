@@ -1,2 +1,6 @@
 >>> Warning 207 "main.c" Line 78(1,1): Code has no effect
 >>> Warning 208 "main.c" Line 150(7,13): Function not void and does not return a value  xuatSo
+>>> Warning 202 "main.c" Line 192(30,36): Variable never used:   index2
+      Memory usage:   ROM=24%      RAM=5% - 7%
+      0 Errors,  3 Warnings.
+Build Successful.
