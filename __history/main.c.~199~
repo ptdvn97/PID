@@ -1,0 +1,78 @@
+#include <main.h>
+#include <lcd.h>
+
+#byte    QEICON= 0xFB6    // Thanh ghi dieu khien
+#byte DFLTCON  = 0xf60
+int16    POSCNT; 
+#byte    POSCNT= 0xF66  //Vi tri encoder
+#byte    POSCNTH= 0xF67
+#byte    POSCNTL= 0xF66
+int16    MAXCNT;
+#byte    MAXCNT= 0xF64  //POSCNT reset khi = MAXCNT
+#byte    MAXCNTH= 0xF65
+#byte    MAXCNTL= 0xF64
+
+#define Kp        10
+#define Ki        0.1
+#define Kd        0.01
+int16 PID,err = 0, de_Pos, re_Pos;
+
+void xuatSo(int16 depos, int16 repos)
+{
+   lcd_init();
+   unsigned int16 biens;
+   unsigned int8 as,bs,cs,ds;
+   
+   biens = depos; //256
+   as = biens %10; // 6
+   
+   bien = biens/10; // 25
+   bs = biens%10; // 5
+   
+   bien = biens/10; // 2
+   cs = biens%10;
+   
+   lcd_gotoxy(1,1); // cot 1 dong 1
+   lcd_putc('\f');
+   printf(lcd_putc,"Inital: %d%d%d",cs,bs,as);
+   unsigned int16 bien;
+   unsigned int8 a,b,c,d;
+   bien = repos; //256
+   a = bien %10; // 6
+   
+   bien = bien/10; // 25
+   b = bien%10; // 5
+   
+   bien = bien/10; // 2
+   c = bien%10;
+   
+   lcd_gotoxy(1,2);
+   printf(lcd_putc,"Respond: %d%d%d",c,b,a);
+}
+
+void cal_PID(int16 thamso1 , int16 thamso2) // thamso1 = de_Pos, thamso2 = POSCNT.
+{
+   err = de_Pos - re_Pos/4;
+   PID = Kp*err;
+}
+
+void main()
+{
+   QEICON   = 0b10101000;
+   DFLTCON  = 0x00010110;
+   POSCNT = 0;
+   MAXCNT  = 65536;
+   de_Pos = 600;
+  unsigned int16 pulse=0;
+  printf(lcd_putc,"Value: %d",de_Pos);
+   while(TRUE)
+   {
+      re_Pos = POSCNT/2;
+      xuatSo(re_Pos);
+   }
+}
+
+
+
+
+

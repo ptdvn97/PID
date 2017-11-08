@@ -1,0 +1,183 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004-005 PID
+006-007 new_err
+008-009 de_Pos
+00A-00B re_Pos
+00C-00D i
+00E-00F e
+010-011 pwm
+012-013 xuatSo.depos
+012-015 atan2.y
+012-015 @MULFF.P1
+012-013 @MULS1616.P2
+012     PID_Conf.@SCRATCH1
+013     PID_Conf.@SCRATCH2
+014-015 xuatSo.repos
+014-015 @MULS1616.P1
+014     PID_Conf.@SCRATCH3
+015     PID_Conf.@SCRATCH4
+016-019 @ADDFF.P1
+016-019 @SFTOI.P2
+016-017 xuatSo.biens
+016-019 @MULFF.P1
+016-017 @SITOF.P2
+016-019 atan2.x
+016-019 @DIVFF.P1
+016     @MULS1616.@SCRATCH1
+017     @MULS1616.@SCRATCH2
+018     xuatSo.as
+019     xuatSo.bs
+01A-01D @ADDFF.P1
+01A-01D @DIVFF.P2
+01A     xuatSo.cs
+01A-01D atan2.z
+01A     @MULFF.@SCRATCH1
+01B     xuatSo.ds
+01B     @MULFF.@SCRATCH2
+01C-01D xuatSo.bien
+01C     @MULFF.@SCRATCH3
+01E     xuatSo.a
+01E.0   atan2.sign
+01E     @ADDFF.@SCRATCH1
+01E     @DIVFF.@SCRATCH1
+01F     xuatSo.b
+01F     atan2.quad
+01F     @ADDFF.@SCRATCH2
+01F     @DIVFF.@SCRATCH2
+020     xuatSo.c
+020     @ADDFF.@SCRATCH3
+020     @DIVFF.@SCRATCH3
+021     xuatSo.d
+021     @ADDFF.@SCRATCH4
+021     @DIVFF.@SCRATCH4
+022-023 @DIV1616.P1
+022     @PRINTF_D_826.P2
+022     @PSTRINGCN_826.P3
+022     lcd_init.i
+022     @ADDFF.@SCRATCH5
+022     @DIVFF.@SCRATCH5
+023     @PRINTF_D_826.P1
+023     @ADDFF.@SCRATCH6
+023     @DIVFF.@SCRATCH6
+023     lcd_init.@SCRATCH1
+023     @PSTRINGCN_826.@SCRATCH1
+024-025 @DIV1616.P1
+024     @ADDFF.@SCRATCH7
+024     @PSTRINGCN_826.@SCRATCH2
+024     @PRINTF_D_826.@SCRATCH1
+025     @ADDFF.@SCRATCH8
+025     @PRINTF_D_826.@SCRATCH2
+026     @DIV1616.@SCRATCH1
+026     @PRINTF_D_826.@SCRATCH3
+027     @PRINTF_D_826.@SCRATCH4
+028     lcd_putc.c
+028     @DIV88.P1
+029     @DIV88.P1
+029     @delay_ms2.P2
+029     lcd_gotoxy.x
+02A     lcd_gotoxy.y
+02A     @DIV88.@SCRATCH1
+02B     lcd_gotoxy.address
+02C     lcd_gotoxy.@SCRATCH1
+02D     lcd_send_byte.address
+02E     lcd_send_byte.n
+02F     lcd_read_byte.low
+02F     lcd_send_byte.@SCRATCH1
+030     lcd_send_nibble.n
+030     lcd_read_byte.high
+031     lcd_read_nibble.n
+031     lcd_read_byte.@SCRATCH1
+032     lcd_read_nibble.@SCRATCH1
+F60     DFLTCON
+F64     MAXCNTL
+F64-F65 MAXCNT
+F65     MAXCNTH
+F66     POSCNTL
+F66-F67 POSCNT
+F67     POSCNTH
+F6C.2   FLTA
+F6C.6   FLTB
+FB6     QEICON
+FBB     CCP_2_LOW
+FBB     CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE     CCP_1
+FBF     CCP_1_HIGH
+FE1-FE2 @WRITE_PACKED_MEMORY.P1
+FE1-FE2 @READ_PACKED_MEMORY.P2
+FE9-FEA @WRITE_PACKED_MEMORY.P1
+FE9-FEA @READ_PACKED_MEMORY.P2
+FE9-FEA @READ_PROGRAM_MEMORY.P3
+FE9-FEA @WRITE_PROGRAM_MEMORY.P4
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+000004  LCD_INIT_STRING.call
+000014  LCD_INIT_STRING.data
+000018  @const863.call
+000028  @const877.call
+000038  @delay_ms2
+000052  lcd_send_nibble
+000090  lcd_read_nibble
+0000E2  lcd_read_byte
+00012C  lcd_send_byte
+00016C  lcd_init
+0001CA  @DIV1616
+00020C  lcd_gotoxy
+00024A  lcd_putc
+00028C  @PSTRINGCN_826
+0002AA  @DIV88
+0002D2  @PRINTF_D_826
+00037C  xuatSo
+0004DA  @MULS1616
+00052C  @SITOF
+000574  @MULFF
+000666  @ADDFF
+0008D0  @SFTOI
+000908  @DIVFF
+000A64  PID_Conf
+000C2E  MAIN
+000C2E  @cinit1
+000C54  @cinit2
+
+Project Directory:
+    C:\Users\Dung Phan\Documents\PID\
+
+Project Files:
+    main.c                                                  [08-Nov-17 08:04  CRC=A18110E9]
+    main.h                                                  [08-Nov-17 07:10  CRC=00000000]
+    ..\..\..\..\Program Files (x86)\PICC\Devices\18F4431.h  [12-Nov-13 14:35  CRC=82CE54B8]
+    ..\..\..\..\Program Files (x86)\PICC\Devices\lcd.h      [06-Nov-17 22:04  CRC=FA7899CF]
+    ..\..\..\..\Program Files (x86)\PICC\Drivers\math.h     [28-Sep-12 11:35  CRC=546412C9]
+
+Source signature=C7902502
+
+Units:
+    main (main)
+
+Compiler Settings:
+    Processor:      PIC18F4431
+    Pointer Size:   16
+    ADC Range:      0-1023
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+    Compile Mode:       CCS5
+
+Output Files:
+    XREF file:   main.xsym
+    Errors:      main.err
+    Ext Symbols: main.esym
+    INHX32:      main.hex
+    Symbols:     main.sym
+    List:        main.lst
+    Debug/COFF:  main.cof
+    Project:     main.ccspjt
+    Call Tree:   main.tre
+    Statistics:  main.STA
