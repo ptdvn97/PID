@@ -1,16 +1,16 @@
-CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 19:38
+CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 19:51
 
                Filename:   C:\Users\Dung Phan\Documents\PID\main.lst
 
-               ROM used:   3814 bytes (23%)
-                           Largest free fragment is 12570
+               ROM used:   3906 bytes (24%)
+                           Largest free fragment is 12478
                RAM used:   36 (5%) at main() level
                            56 (7%) worst case
                Stack used: 5 locations
                Stack size: 31
 
 *
-0000:  GOTO   0D7E
+0000:  GOTO   0DD8
 .................... #include <main.h> 
 .................... #include <18F4431.h> 
 .................... //////////// Standard Header file for the PIC18F4431 device //////////////// 
@@ -6349,24 +6349,74 @@ CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 19:38
 ....................    e = new_err; 
 0D4C:  MOVFF  13,1B
 0D50:  MOVFF  12,1A
-....................    set_pwm1_duty(PWM); 
-0D54:  MOVFF  1D,02
-0D58:  MOVFF  1C,01
-0D5C:  RRCF   02,F
-0D5E:  RRCF   01,F
-0D60:  RRCF   02,F
-0D62:  RRCF   01,F
-0D64:  RRCF   02,F
-0D66:  MOVFF  01,FBE
+....................    if(new_err > 0) 
+0D54:  BTFSC  13.7
+0D56:  BRA    0D8C
+0D58:  MOVF   13,F
+0D5A:  BNZ   0D62
+0D5C:  MOVF   12,W
+0D5E:  SUBLW  00
+0D60:  BC    0D8C
+....................    { 
+....................       set_pwm1_duty(PWM); 
+0D62:  MOVFF  1D,02
+0D66:  MOVFF  1C,01
 0D6A:  RRCF   02,F
-0D6C:  RRCF   02,W
-0D6E:  ANDLW  30
-0D70:  MOVWF  00
-0D72:  MOVF   FBD,W
-0D74:  ANDLW  CF
-0D76:  IORWF  00,W
-0D78:  MOVWF  FBD
-0D7A:  GOTO   0EE2 (RETURN)
+0D6C:  RRCF   01,F
+0D6E:  RRCF   02,F
+0D70:  RRCF   01,F
+0D72:  RRCF   02,F
+0D74:  MOVFF  01,FBE
+0D78:  RRCF   02,F
+0D7A:  RRCF   02,W
+0D7C:  ANDLW  30
+0D7E:  MOVWF  00
+0D80:  MOVF   FBD,W
+0D82:  ANDLW  CF
+0D84:  IORWF  00,W
+0D86:  MOVWF  FBD
+....................       set_pwm2_duty(0); 
+0D88:  CLRF   FBB
+....................    } 
+0D8A:  BRA    0DD4
+....................    else 
+....................    { 
+....................     PWM = abs(PWM); 
+0D8C:  MOVFF  1D,03
+0D90:  MOVF   1C,W
+0D92:  BTFSS  1D.7
+0D94:  BRA    0DA6
+0D96:  MOVLW  00
+0D98:  BSF    FD8.0
+0D9A:  SUBFWB 1C,W
+0D9C:  MOVWF  00
+0D9E:  MOVLW  00
+0DA0:  SUBFWB 1D,W
+0DA2:  MOVWF  03
+0DA4:  MOVF   00,W
+0DA6:  MOVWF  1C
+0DA8:  MOVFF  03,1D
+....................     set_pwm2_duty(PWM); 
+0DAC:  MOVFF  1D,02
+0DB0:  MOVFF  1C,01
+0DB4:  RRCF   02,F
+0DB6:  RRCF   01,F
+0DB8:  RRCF   02,F
+0DBA:  RRCF   01,F
+0DBC:  RRCF   02,F
+0DBE:  MOVFF  01,FBB
+0DC2:  RRCF   02,F
+0DC4:  RRCF   02,W
+0DC6:  ANDLW  30
+0DC8:  MOVWF  00
+0DCA:  MOVF   FBA,W
+0DCC:  ANDLW  CF
+0DCE:  IORWF  00,W
+0DD0:  MOVWF  FBA
+....................     set_pwm1_duty(0); 
+0DD2:  CLRF   FBE
+....................    } 
+0DD4:  GOTO   0F3E (RETURN)
 .................... } 
 ....................  
 .................... void nhapSo() 
@@ -6482,184 +6532,186 @@ CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 19:38
 ....................       } 
 0466:  BRA    03D0
 ....................    } 
-0468:  GOTO   0DE4 (RETURN)
+0468:  GOTO   0E3E (RETURN)
 .................... } 
 ....................  
 .................... void main() 
 *
-0D7E:  CLRF   FF8
-0D80:  BCF    FD0.7
-0D82:  CLRF   13
-0D84:  CLRF   12
-0D86:  CLRF   15
-0D88:  CLRF   14
-0D8A:  CLRF   17
-0D8C:  CLRF   16
-0D8E:  CLRF   19
-0D90:  CLRF   18
-0D92:  CLRF   1B
-0D94:  CLRF   1A
-0D96:  CLRF   1D
-0D98:  CLRF   1C
-0D9A:  CLRF   23
-0D9C:  CLRF   22
-0D9E:  BCF    FB9.0
-0DA0:  BCF    FC1.6
-0DA2:  BCF    FC1.7
-0DA4:  MOVLW  00
-0DA6:  MOVWF  FB8
-0DA8:  MOVLW  31
-0DAA:  MOVWF  04
-0DAC:  MOVLW  32
-0DAE:  MOVWF  05
-0DB0:  MOVLW  33
-0DB2:  MOVWF  06
-0DB4:  MOVLW  34
-0DB6:  MOVWF  07
-0DB8:  MOVLW  35
-0DBA:  MOVWF  08
-0DBC:  MOVLW  36
-0DBE:  MOVWF  09
-0DC0:  MOVLW  37
-0DC2:  MOVWF  0A
-0DC4:  MOVLW  38
-0DC6:  MOVWF  0B
-0DC8:  MOVLW  39
-0DCA:  MOVWF  0C
-0DCC:  MOVLW  2A
-0DCE:  MOVWF  0D
-0DD0:  MOVLW  30
-0DD2:  MOVWF  0E
-0DD4:  MOVLW  23
-0DD6:  MOVWF  0F
-0DD8:  CLRF   1E
-0DDA:  CLRF   1F
-0DDC:  CLRF   20
-0DDE:  CLRF   21
+0DD8:  CLRF   FF8
+0DDA:  BCF    FD0.7
+0DDC:  CLRF   13
+0DDE:  CLRF   12
+0DE0:  CLRF   15
+0DE2:  CLRF   14
+0DE4:  CLRF   17
+0DE6:  CLRF   16
+0DE8:  CLRF   19
+0DEA:  CLRF   18
+0DEC:  CLRF   1B
+0DEE:  CLRF   1A
+0DF0:  CLRF   1D
+0DF2:  CLRF   1C
+0DF4:  CLRF   23
+0DF6:  CLRF   22
+0DF8:  BCF    FB9.0
+0DFA:  BCF    FC1.6
+0DFC:  BCF    FC1.7
+0DFE:  MOVLW  00
+0E00:  MOVWF  FB8
+0E02:  MOVLW  31
+0E04:  MOVWF  04
+0E06:  MOVLW  32
+0E08:  MOVWF  05
+0E0A:  MOVLW  33
+0E0C:  MOVWF  06
+0E0E:  MOVLW  34
+0E10:  MOVWF  07
+0E12:  MOVLW  35
+0E14:  MOVWF  08
+0E16:  MOVLW  36
+0E18:  MOVWF  09
+0E1A:  MOVLW  37
+0E1C:  MOVWF  0A
+0E1E:  MOVLW  38
+0E20:  MOVWF  0B
+0E22:  MOVLW  39
+0E24:  MOVWF  0C
+0E26:  MOVLW  2A
+0E28:  MOVWF  0D
+0E2A:  MOVLW  30
+0E2C:  MOVWF  0E
+0E2E:  MOVLW  23
+0E30:  MOVWF  0F
+0E32:  CLRF   1E
+0E34:  CLRF   1F
+0E36:  CLRF   20
+0E38:  CLRF   21
 .................... { 
 ....................    nhapSo(); 
-0DE0:  GOTO   03A6
+0E3A:  GOTO   03A6
 ....................    QEICON   = 0x18; 
-0DE4:  MOVLW  18
-0DE6:  MOVWF  FB6
+0E3E:  MOVLW  18
+0E40:  MOVWF  FB6
 ....................    POSCNT = 0; 
-0DE8:  CLRF   F67
-0DEA:  CLRF   F66
+0E42:  CLRF   F67
+0E44:  CLRF   F66
 ....................    MAXCNT  = 65536; 
-0DEC:  CLRF   F65
-0DEE:  CLRF   F64
+0E46:  CLRF   F65
+0E48:  CLRF   F64
 ....................    scanCol(); 
-0DF0:  CALL   02B8
+0E4A:  CALL   02B8
 ....................    setup_timer_2(T2_DIV_BY_16,255,1);// 244hz 
-0DF4:  MOVLW  00
-0DF6:  IORLW  06
-0DF8:  MOVWF  FCA
-0DFA:  MOVLW  FF
-0DFC:  MOVWF  FCB
+0E4E:  MOVLW  00
+0E50:  IORLW  06
+0E52:  MOVWF  FCA
+0E54:  MOVLW  FF
+0E56:  MOVWF  FCB
 ....................    setup_ccp1(CCP_PWM); 
-0DFE:  BCF    F94.2
-0E00:  BCF    F8B.2
-0E02:  MOVLW  0C
-0E04:  MOVWF  FBD
+0E58:  BCF    F94.2
+0E5A:  BCF    F8B.2
+0E5C:  MOVLW  0C
+0E5E:  MOVWF  FBD
 ....................    set_pwm1_duty(0); 
-0E06:  CLRF   FBE
+0E60:  CLRF   FBE
 ....................    setup_ccp2(CCP_PWM); 
-0E08:  BCF    F94.1
-0E0A:  BCF    F8B.1
-0E0C:  MOVWF  FBA
+0E62:  BCF    F94.1
+0E64:  BCF    F8B.1
+0E66:  MOVWF  FBA
+....................    set_pwm2_duty(0); 
+0E68:  CLRF   FBB
 ....................    lcd_init(); 
-0E0E:  CALL   0180
+0E6A:  CALL   0180
 ....................    xuatSo(de_Pos); 
-0E12:  MOVFF  15,25
-0E16:  MOVFF  14,24
-0E1A:  CALL   04AE
+0E6E:  MOVFF  15,25
+0E72:  MOVFF  14,24
+0E76:  CALL   04AE
 ....................    lcd_gotoxy(1,1); 
-0E1E:  MOVLW  01
-0E20:  MOVWF  2D
-0E22:  MOVWF  2E
-0E24:  CALL   01DC
+0E7A:  MOVLW  01
+0E7C:  MOVWF  2D
+0E7E:  MOVWF  2E
+0E80:  CALL   01DC
 ....................    lcd_putc('\f'); 
-0E28:  MOVLW  0C
-0E2A:  MOVWF  2C
-0E2C:  CALL   021A
+0E84:  MOVLW  0C
+0E86:  MOVWF  2C
+0E88:  CALL   021A
 ....................    printf(lcd_putc,"Inital: %d%d%d%d",value[0],value[1],value[2],value[3]); 
-0E30:  MOVLW  28
-0E32:  MOVWF  FF6
-0E34:  MOVLW  00
-0E36:  MOVWF  FF7
-0E38:  MOVLW  08
-0E3A:  MOVWF  24
-0E3C:  CALL   0540
-0E40:  MOVFF  1E,24
-0E44:  MOVLW  18
-0E46:  MOVWF  25
-0E48:  CALL   0586
-0E4C:  MOVFF  1F,24
-0E50:  MOVLW  18
-0E52:  MOVWF  25
-0E54:  CALL   0586
-0E58:  MOVFF  20,24
-0E5C:  MOVLW  18
-0E5E:  MOVWF  25
-0E60:  CALL   0586
-0E64:  MOVFF  21,24
-0E68:  MOVLW  18
-0E6A:  MOVWF  25
-0E6C:  CALL   0586
+0E8C:  MOVLW  28
+0E8E:  MOVWF  FF6
+0E90:  MOVLW  00
+0E92:  MOVWF  FF7
+0E94:  MOVLW  08
+0E96:  MOVWF  24
+0E98:  CALL   0540
+0E9C:  MOVFF  1E,24
+0EA0:  MOVLW  18
+0EA2:  MOVWF  25
+0EA4:  CALL   0586
+0EA8:  MOVFF  1F,24
+0EAC:  MOVLW  18
+0EAE:  MOVWF  25
+0EB0:  CALL   0586
+0EB4:  MOVFF  20,24
+0EB8:  MOVLW  18
+0EBA:  MOVWF  25
+0EBC:  CALL   0586
+0EC0:  MOVFF  21,24
+0EC4:  MOVLW  18
+0EC6:  MOVWF  25
+0EC8:  CALL   0586
 ....................    while(TRUE) 
 ....................    {   
 ....................       re_Pos = POSCNT/4; 
-0E70:  RRCF   F67,W
-0E72:  MOVWF  03
-0E74:  RRCF   F66,W
-0E76:  MOVWF  02
-0E78:  RRCF   03,F
-0E7A:  RRCF   02,F
-0E7C:  MOVLW  3F
-0E7E:  ANDWF  03,F
-0E80:  MOVFF  02,16
-0E84:  MOVFF  03,17
+0ECC:  RRCF   F67,W
+0ECE:  MOVWF  03
+0ED0:  RRCF   F66,W
+0ED2:  MOVWF  02
+0ED4:  RRCF   03,F
+0ED6:  RRCF   02,F
+0ED8:  MOVLW  3F
+0EDA:  ANDWF  03,F
+0EDC:  MOVFF  02,16
+0EE0:  MOVFF  03,17
 ....................       xuatSo(re_Pos); 
-0E88:  MOVFF  17,25
-0E8C:  MOVFF  16,24
-0E90:  CALL   04AE
+0EE4:  MOVFF  17,25
+0EE8:  MOVFF  16,24
+0EEC:  CALL   04AE
 ....................       lcd_gotoxy(1,2); 
-0E94:  MOVLW  01
-0E96:  MOVWF  2D
-0E98:  MOVLW  02
-0E9A:  MOVWF  2E
-0E9C:  CALL   01DC
+0EF0:  MOVLW  01
+0EF2:  MOVWF  2D
+0EF4:  MOVLW  02
+0EF6:  MOVWF  2E
+0EF8:  CALL   01DC
 ....................       printf(lcd_putc,"Respond: %d%d%d%d",value[0],value[1],value[2],value[3]); 
-0EA0:  MOVLW  3A
-0EA2:  MOVWF  FF6
-0EA4:  MOVLW  00
-0EA6:  MOVWF  FF7
-0EA8:  MOVLW  09
-0EAA:  MOVWF  24
-0EAC:  CALL   0540
-0EB0:  MOVFF  1E,24
-0EB4:  MOVLW  18
-0EB6:  MOVWF  25
-0EB8:  CALL   0586
-0EBC:  MOVFF  1F,24
-0EC0:  MOVLW  18
-0EC2:  MOVWF  25
-0EC4:  CALL   0586
-0EC8:  MOVFF  20,24
-0ECC:  MOVLW  18
-0ECE:  MOVWF  25
-0ED0:  CALL   0586
-0ED4:  MOVFF  21,24
-0ED8:  MOVLW  18
-0EDA:  MOVWF  25
-0EDC:  CALL   0586
+0EFC:  MOVLW  3A
+0EFE:  MOVWF  FF6
+0F00:  MOVLW  00
+0F02:  MOVWF  FF7
+0F04:  MOVLW  09
+0F06:  MOVWF  24
+0F08:  CALL   0540
+0F0C:  MOVFF  1E,24
+0F10:  MOVLW  18
+0F12:  MOVWF  25
+0F14:  CALL   0586
+0F18:  MOVFF  1F,24
+0F1C:  MOVLW  18
+0F1E:  MOVWF  25
+0F20:  CALL   0586
+0F24:  MOVFF  20,24
+0F28:  MOVLW  18
+0F2A:  MOVWF  25
+0F2C:  CALL   0586
+0F30:  MOVFF  21,24
+0F34:  MOVLW  18
+0F36:  MOVWF  25
+0F38:  CALL   0586
 ....................       PID_Config(); 
-0EE0:  BRA    0BBA
-0EE2:  BRA    0E70
+0F3C:  BRA    0BBA
+0F3E:  BRA    0ECC
 ....................    } 
 .................... } 
 ....................  
-0EE4:  SLEEP 
+0F40:  SLEEP 
 ....................  
 ....................  
 

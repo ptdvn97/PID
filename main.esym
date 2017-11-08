@@ -1,8 +1,7 @@
-D G "HANG_4" 0 28 "input(PIN_D3)"
-D G "__PCH__" 0 226 ""5.025""
-D G "__DEVICE__" 0 226 "4431"
-D G "__DATE__" 0 226 ""08-Nov-17""
-D G "__TIME__" 0 226 ""19:38:46"" "Standard Header file for the PIC18F4431 device ////////////////"
+D G "__PCH__" 0 239 ""5.025""
+D G "__DEVICE__" 0 239 "4431"
+D G "__DATE__" 0 239 ""08-Nov-17""
+D G "__TIME__" 0 239 ""19:51:57"" "Standard Header file for the PIC18F4431 device ////////////////"
 c L "set_tris_a" 2 3 6 "FUNCTION"
 v L "value" 2 44 "int8" `54 
 f B "set_tris_a" 2 44 "void(int8 value)" `53 
@@ -1298,14 +1297,14 @@ F G "xuatSo" 0 137 "int16(int16 number)" `862
 V L "temp" 0 138 "int16" `864 
 C L "xuatSo" 0 4 1 "FUNCTION"
 F G "PID_Config" 0 154 "void()" `868 
-F G "nhapSo" 0 167 "void()" `872 
-V L "Key" 0 168 "int8" `873 
-V L "tam" 0 168 "int8" `874 
-V L "index" 0 168 "int8" `875 
-V L "index2" 0 168 "int8" `876 
-V L "so" 0 169 "int16" `877 
+F G "nhapSo" 0 177 "void()" `872 
+V L "Key" 0 178 "int8" `873 
+V L "tam" 0 178 "int8" `874 
+V L "index" 0 178 "int8" `875 
+V L "index2" 0 178 "int8" `876 
+V L "so" 0 179 "int16" `877 
 C L "nhapSo" 0 4 1 "FUNCTION"
-F G "MAIN" 0 200 "void()" `884 
+F G "MAIN" 0 210 "void()" `884 
 C L "MAIN" 0 4 1 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
