@@ -129,9 +129,6 @@ char scanKey()
 
 signed int16 PID, new_err = 0, de_Pos=0, re_Pos=0,I=0,e=0,pwm=0;
 int8 value[4] = {0,0,0,0}; //stores single numbers
-int16 so = 0;
-
-
 
 int16 xuatSo(int16 number)
 {
@@ -150,77 +147,37 @@ int16 xuatSo(int16 number)
    value[0] = temp; //  1
 }
 
-void PID_Config()
-{
-   new_err = de_Pos - re_Pos;
-   PID = Kp*new_err;
-   I  = e + new_err;
-   PID = PID + Ki*I;
-   PID = PID + Kd*(new_err-e)/timer2_value;
-   PWM = PID;
-   if (PWM > max_pwm) PWM = max_pwm;
-   e = new_err;
-   set_pwm1_duty(PWM);
-}
-
-void nhapSo()
-{  
-   int8 Key=0, tam, index=15,index2=0;
-   int16 so=0;
-   lcd_init();
-   lcd_gotoxy(1,index);
-   lcd_putc('\f');
-   printf(lcd_putc,"Desired value: ");
-   scanCol();
-   while(TRUE)
-   {
-      Key=scanKey();
-      if(Key!=0)
-      {
-         if(Key == 12)
-         {
-            break;
-         }
-         tam=Key;
-         if(Key != 11)
-         so = so*10 + Key;
-         else
-         so = so*10;
-         lcd_gotoxy(index,1);
-         printf(lcd_putc,"%c",phimnhan[tam-1]); // hien thi phim nhan
-         index++;
-         while(scanKey()!=0)
-         {delay_ms(5);}
-         de_Pos = so;
-      }
-   }
-}
 
 void main()
 {
-   nhapSo();
+   int8 Key=0, tam, index=15,index2=0;
+   int8 so=0;
    QEICON   = 0x18;
    POSCNT = 0;
    MAXCNT  = 65536;
+   de_Pos = 720;
    scanCol();
    setup_timer_2(T2_DIV_BY_16,255,1);// 244hz
    setup_ccp1(CCP_PWM);
    set_pwm1_duty(0);
    setup_ccp2(CCP_PWM);
-   lcd_init();
-   xuatSo(de_Pos);
-   lcd_gotoxy(1,1);
-   lcd_putc('\f');
-   printf(lcd_putc,"Inital: %d%d%d%d",value[0],value[1],value[2],value[3]);
-   while(TRUE)
-   {  
-      re_Pos = POSCNT/4;
-      xuatSo(re_Pos);
-      lcd_gotoxy(1,2);
-      printf(lcd_putc,"Respond: %d%d%d%d",value[0],value[1],value[2],value[3]);
-      PID_Config();
+   while(1)
+   {
+      Key=scanKey();
+      if(Key!=0)
+      {
+         tam=Key;
+         so = so*10 + Key;
+         lcd_gotoxy(index,1);
+         printf(lcd_putc,"%c",phimnhan[tam-1]); // hien thi phim nhan
+         index++;
+         while(scanKey()!=0)
+         {delay_ms(5);}
+      }
    }
 }
+
+
 
 
 

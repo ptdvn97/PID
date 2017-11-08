@@ -1,70 +1,77 @@
 
-ROM used:   3220/16384 (20%)
-            3220/16384 (20%) including unused fragments
+ROM used:   3814/16384 (23%)
+            3814/16384 (23%) including unused fragments
 
-            0.9 Average locations per line
-            25.6 Average locations per statement
+            1.1 Average locations per line
+            18.4 Average locations per statement
 
-RAM used:   22/768 (3%) at main() level
-            42/768 (5%) worst case
+RAM used:   36/768 (5%) at main() level
+            56/768 (7%) worst case
 
 Stack used: 5 worst case (5 in main + 0 for interrupts)
 Stack size: 31
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-   83    38  30  main.c
+  227   119  57  main.c
     8     0   0  main.h
   892     0   0  ..\..\..\..\Program Files (x86)\PICC\Devices\18F4431.h
-  249    88  70  ..\..\..\..\Program Files (x86)\PICC\Devices\lcd.h
+  249    88  43  ..\..\..\..\Program Files (x86)\PICC\Devices\lcd.h
  2229     0   0  ..\..\..\..\Program Files (x86)\PICC\Drivers\math.h
 ----- -----
- 3461   126 Total
+ 3605   207 Total
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
 0     56   1    4             @SFTOI
-0    242   4   11             @MULFF
-0    618  10   16             @ADDFF
+0    242   3   11             @MULFF
+0    618   8   16             @ADDFF
 0    348   5   14             @DIVFF
 0     72   1    2             @SITOF
 0     26   0    1             @delay_ms2
 0     20   0    0             @const828
-0     94   1    2    594  4.3  lcd_init
+0     92   1    2    594  4.3  lcd_init
 0     74   1    3    620  3.8  lcd_read_byte
 0     82   1    2    204  3.2  lcd_read_nibble
 0     64   1    3    313  3.4  lcd_send_byte
 0     62   1    1    336  1.9  lcd_send_nibble
 0     62   1    4    335  5.5  lcd_gotoxy
 0     66   1    1    275  3.9  lcd_putc
+0     58   1    2    221  3.8  controlCol
+0     28   0    1    104  3.3  scanCol
+0    180   2    2   1239  3.9  scanKey
 0    146   2    4    317  3.4  xuatSo
 0     66   1    5             @DIV1616
-0    452   7    4    334  4.5  PID_Conf
+0    452   6    4    334  4.5  PID_Config
 0     82   1    6             @MULS1616
-0    308   5    0    745  3.8  MAIN
-0     18   0    0             @const866
+0    198   3    8    789  7.6  nhapSo
+0     16   0    0             @const878
+0     34   0    2             @PSTRINGC_826
+0     30   0    5             @MUL1616
+0    360   5    0    757  3.8  MAIN
+0     18   0    0             @const887
 0     30   0    3             @PSTRINGCN_826
 0     40   1    3             @DIV88
-0    170   3    6             @PRINTF_D_826
-0     18   0    0             @const875
+0    170   2    6             @PRINTF_D_826
+0     18   0    0             @const896
  Inline         0             @cinit1
 
 Program metrics:
-    Functions               10
-    Statements              126
-    Comments                344
-    Volume (V)              6493
-    Difficulty (D)          36.4
-    Effort to implement (E) 236467
-    Time to implement (T)   3 hours, 39 minutes
-    Est Delivered Bugs (B)  1
-    Cyclomatic Complexity   11
-    Maintainability (MI)    113
+    Functions               14
+    Statements              207
+    Comments                348
+    Volume (V)              10564
+    Difficulty (D)          55.1
+    Effort to implement (E) 582458
+    Time to implement (T)   8 hours, 59 minutes
+    Est Delivered Bugs (B)  2
+    Cyclomatic Complexity   30
+    Maintainability (MI)    142
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00002     4  0  
-00004-03FFE  3216  13164  
+00004-03FFE  3810  12570  
 
 
 

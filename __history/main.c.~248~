@@ -51,103 +51,45 @@ void controlCol(int cot, int state)
       }
       case 3:
       {
-         output_bit(COT_3,state);
+         output_bit(COT_3,trangthai);
          break;
       }
       
    }
 }
 
-void scanCol() // turn on all column
+void scanCol()
 {
    int i;
-   for(i==1;i<=3;i++)
+   for(i==0;i<=3;i++)
    {
-      controlCol(i,0);
+      controlCol(i,1);
    }
-}
-
-char scanKey()
-{
-   int8 Key = 0;
-   controlCol(1,1);
-   if(HANG_1==1)
-   {
-      Key = 1;
-   }
-   if(HANG_2==1)
-   {
-      Key = 4;
-   }
-   if(HANG_3==1)
-   {
-      Key = 7;
-   }
-   if(HANG_4==1)
-   {
-      Key = 10;
-   }
-   controlCol(1,0);
-   controlCol(2,1);
-   if(HANG_1==1)
-   {
-      Key = 2;
-   }
-   if(HANG_2==1)
-   {
-      Key = 5;
-   }
-   if(HANG_3==1)
-   {
-      Key = 8;
-   }
-   if(HANG_4==1)
-   {
-      Key = 11;
-   }
-   controlCol(2,0);
-   controlCol(3,1);
-   if(HANG_1==1)
-   {
-      Key = 3;
-   }
-   if(HANG_2==1)
-   {
-      Key = 6;
-   }
-   if(HANG_3==1)
-   {
-      Key = 9;
-   }
-   if(HANG_4==1)
-   {
-      Key = 12;
-   }
-   controlCol(3,0);
-   return Key;
 }
 
 signed int16 PID, new_err = 0, de_Pos=0, re_Pos=0,I=0,e=0,pwm=0;
 int8 value[4] = {0,0,0,0}; //stores single numbers
-int16 so = 0;
 
-
+void quetCot()
+{
+   
+}
 
 int16 xuatSo(int16 number)
 {
-   unsigned int16 temp;
+   unsigned int16 bien;
    
    temp = number;  // ex: number = 1234 
-   value[3] = temp %10;  //  4
+   value[3] = bien %10;  //  4
    
-   temp = temp/10;
-   value[2] = temp%10;  // 3
+   bien = bien/10;
+   value[2] = bien%10;  // 3
    
-   temp = temp/10; 
-   value[1] = temp%10; //  2
+   bien = bien/10; 
+   value[1] = bien%10; //  2
    
-   temp = temp/10;
-   value[0] = temp; //  1
+   bien = bien/10;
+   value[0] = bien; //  1
 }
 
 void PID_Config()
@@ -163,46 +105,12 @@ void PID_Config()
    set_pwm1_duty(PWM);
 }
 
-void nhapSo()
-{  
-   int8 Key=0, tam, index=15,index2=0;
-   int16 so=0;
-   lcd_init();
-   lcd_gotoxy(1,index);
-   lcd_putc('\f');
-   printf(lcd_putc,"Desired value: ");
-   scanCol();
-   while(TRUE)
-   {
-      Key=scanKey();
-      if(Key!=0)
-      {
-         if(Key == 12)
-         {
-            break;
-         }
-         tam=Key;
-         if(Key != 11)
-         so = so*10 + Key;
-         else
-         so = so*10;
-         lcd_gotoxy(index,1);
-         printf(lcd_putc,"%c",phimnhan[tam-1]); // hien thi phim nhan
-         index++;
-         while(scanKey()!=0)
-         {delay_ms(5);}
-         de_Pos = so;
-      }
-   }
-}
-
 void main()
 {
-   nhapSo();
    QEICON   = 0x18;
    POSCNT = 0;
    MAXCNT  = 65536;
-   scanCol();
+   de_Pos = 720;
    setup_timer_2(T2_DIV_BY_16,255,1);// 244hz
    setup_ccp1(CCP_PWM);
    set_pwm1_duty(0);
@@ -213,7 +121,7 @@ void main()
    lcd_putc('\f');
    printf(lcd_putc,"Inital: %d%d%d%d",value[0],value[1],value[2],value[3]);
    while(TRUE)
-   {  
+   {
       re_Pos = POSCNT/4;
       xuatSo(re_Pos);
       lcd_gotoxy(1,2);
@@ -221,6 +129,8 @@ void main()
       PID_Config();
    }
 }
+
+
 
 
 

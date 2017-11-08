@@ -182,10 +182,7 @@ void nhapSo()
             break;
          }
          tam=Key;
-         if(Key != 11)
          so = so*10 + Key;
-         else
-         so = so*10;
          lcd_gotoxy(index,1);
          printf(lcd_putc,"%c",phimnhan[tam-1]); // hien thi phim nhan
          index++;

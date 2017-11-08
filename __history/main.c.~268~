@@ -163,42 +163,9 @@ void PID_Config()
    set_pwm1_duty(PWM);
 }
 
-void nhapSo()
-{  
-   int8 Key=0, tam, index=15,index2=0;
-   int16 so=0;
-   lcd_init();
-   lcd_gotoxy(1,index);
-   lcd_putc('\f');
-   printf(lcd_putc,"Desired value: ");
-   scanCol();
-   while(TRUE)
-   {
-      Key=scanKey();
-      if(Key!=0)
-      {
-         if(Key == 12)
-         {
-            break;
-         }
-         tam=Key;
-         if(Key != 11)
-         so = so*10 + Key;
-         else
-         so = so*10;
-         lcd_gotoxy(index,1);
-         printf(lcd_putc,"%c",phimnhan[tam-1]); // hien thi phim nhan
-         index++;
-         while(scanKey()!=0)
-         {delay_ms(5);}
-         de_Pos = so;
-      }
-   }
-}
-
 void main()
 {
-   nhapSo();
+   
    QEICON   = 0x18;
    POSCNT = 0;
    MAXCNT  = 65536;

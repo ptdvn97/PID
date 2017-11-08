@@ -1,7 +1,8 @@
-D G "__PCH__" 0 84 ""5.025""
-D G "__DEVICE__" 0 84 "4431"
-D G "__DATE__" 0 84 ""08-Nov-17""
-D G "__TIME__" 0 84 ""13:53:22"" "Standard Header file for the PIC18F4431 device ////////////////"
+D G "HANG_4" 0 28 "input(PIN_D3)"
+D G "__PCH__" 0 226 ""5.025""
+D G "__DEVICE__" 0 226 "4431"
+D G "__DATE__" 0 226 ""08-Nov-17""
+D G "__TIME__" 0 226 ""19:38:46"" "Standard Header file for the PIC18F4431 device ////////////////"
 c L "set_tris_a" 2 3 6 "FUNCTION"
 v L "value" 2 44 "int8" `54 
 f B "set_tris_a" 2 44 "void(int8 value)" `53 
@@ -1260,30 +1261,51 @@ C L "lcd_putc" 3 12 1 "FUNCTION"
 C L "lcd_putc" 3 12 1 "FUNCTION"
 C L "lcd_putc" 3 12 1 "FUNCTION"
 C L "lcd_putc" 3 12 1 "FUNCTION"
-V G "POSCNT" 0 6 "int16" `839 
-V G "MAXCNT" 0 10 "int16" `842 
-D G "Kp" 0 15 "10"
-D G "Ki" 0 16 "0.1"
-D G "Kd" 0 17 "0.01"
-D G "max_pwm" 0 18 "1000"
-D G "timer2_value" 0 19 "0.5"
-V G "PID" 0 21 "sint16" `845 
-V G "new_err" 0 21 "sint16" `846 
-V G "de_Pos" 0 21 "sint16" `847 
-V G "re_Pos" 0 21 "sint16" `848 
-V G "i" 0 21 "sint16" `849 
-V G "e" 0 21 "sint16" `850 
-V G "pwm" 0 21 "sint16" `851 
-V G "value" 0 22 "int8[4]" `852 
+V G "POSCNT" 0 7 "int16" `839 
+V G "MAXCNT" 0 11 "int16" `842 
+D G "Kp" 0 16 "10"
+D G "Ki" 0 17 "0.1"
+D G "Kd" 0 18 "0.01"
+D G "max_pwm" 0 19 "1000"
+D G "timer2_value" 0 20 "0.5"
+D G "COT_1" 0 22 "PIN_D4"
+D G "COT_2" 0 23 "PIN_D5"
+D G "COT_3" 0 24 "PIN_D6"
+D G "HANG_1" 0 25 "input(PIN_D0)"
+D G "HANG_2" 0 26 "input(PIN_D1)"
+D G "HANG_3" 0 27 "input(PIN_D2)"
+D G "HANG_4" 0 28 "input(PIN_D3)"
+V G "phimnhan" 0 30 "int8[12]" `845 
+V L "cot" 0 38 "int8" `847 
+V L "state" 0 38 "int8" `848 
+F G "controlCol" 0 39 "void(int8 cot,int8 state)" `846 
+C L "scanCol" 0 4 1 "FUNCTION"
+F G "scanCol" 0 62 "void()" `849 
+V L "i" 0 63 "int8" `850 
+F G "scanKey" 0 71 "int8()" `851 
+V L "Key" 0 72 "int8" `852 
+V G "PID" 0 130 "sint16" `853 
+V G "new_err" 0 130 "sint16" `854 
+V G "de_Pos" 0 130 "sint16" `855 
+V G "re_Pos" 0 130 "sint16" `856 
+V G "i" 0 130 "sint16" `857 
+V G "e" 0 130 "sint16" `858 
+V G "pwm" 0 130 "sint16" `859 
+V G "value" 0 131 "int8[4]" `860 
+V G "so" 0 132 "int16" `861 
+V L "number" 0 136 "int16" `863 
+F G "xuatSo" 0 137 "int16(int16 number)" `862 
+V L "temp" 0 138 "int16" `864 
 C L "xuatSo" 0 4 1 "FUNCTION"
-V L "so" 0 24 "int16" `854 
-F G "xuatSo" 0 25 "int16(int16 so)" `853 
-V L "bien" 0 26 "int16" `855 
-C L "xuatSo" 0 4 1 "FUNCTION"
-C L "xuatSo" 0 4 1 "FUNCTION"
-C L "xuatSo" 0 4 1 "FUNCTION"
-F G "PID_Conf" 0 42 "void()" `859 
-F G "MAIN" 0 55 "void()" `863 
+F G "PID_Config" 0 154 "void()" `868 
+F G "nhapSo" 0 167 "void()" `872 
+V L "Key" 0 168 "int8" `873 
+V L "tam" 0 168 "int8" `874 
+V L "index" 0 168 "int8" `875 
+V L "index2" 0 168 "int8" `876 
+V L "so" 0 169 "int16" `877 
+C L "nhapSo" 0 4 1 "FUNCTION"
+F G "MAIN" 0 200 "void()" `884 
 C L "MAIN" 0 4 1 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0
