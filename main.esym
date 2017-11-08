@@ -1,7 +1,7 @@
-D G "__PCH__" 0 92 ""5.025""
-D G "__DEVICE__" 0 92 "4431"
-D G "__DATE__" 0 92 ""08-Nov-17""
-D G "__TIME__" 0 92 ""08:22:30"" "Standard Header file for the PIC18F4431 device ////////////////"
+D G "__PCH__" 0 91 ""5.025""
+D G "__DEVICE__" 0 91 "4431"
+D G "__DATE__" 0 91 ""08-Nov-17""
+D G "__TIME__" 0 91 ""09:20:49"" "Standard Header file for the PIC18F4431 device ////////////////"
 c L "set_tris_a" 2 3 6 "FUNCTION"
 v L "value" 2 44 "int8" `54 
 f B "set_tris_a" 2 44 "void(int8 value)" `53 

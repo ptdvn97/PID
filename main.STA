@@ -45,21 +45,21 @@ Page ROM  %  RAM    Vol Diff  Functions:
 0    170   3    6             @PRINTF_D_826
 0     16   0    0             @const877
 0    452   7    4    347  4.5  PID_Conf
-0     82   1    6    179  3.1  @MULS1616
+0     82   1    6             @MULS1616
 0    134   2    0    292  3.3  MAIN
- Inline         0    219  3.2  @cinit1
+ Inline         0             @cinit1
 
 Program metrics:
-    Functions               12
+    Functions               10
     Statements              131
     Comments                338
-    Volume (V)              7581
-    Difficulty (D)          43.2
-    Effort to implement (E) 327812
-    Time to implement (T)   5 hours, 4 minutes
-    Est Delivered Bugs (B)  2
+    Volume (V)              6715
+    Difficulty (D)          36.7
+    Effort to implement (E) 246146
+    Time to implement (T)   3 hours, 48 minutes
+    Est Delivered Bugs (B)  1
     Cyclomatic Complexity   11
-    Maintainability (MI)    145
+    Maintainability (MI)    116
 
  Segment     Used  Free
 -----------  ----  ----

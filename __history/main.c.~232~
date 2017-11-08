@@ -70,7 +70,7 @@ void main()
    QEICON   = 0x18;
    POSCNT = 0;
    MAXCNT  = 65536;
-   de_Pos = 700;
+   de_Pos = 1000;
    setup_timer_2(T2_DIV_BY_16,255,1);// 244hz
    setup_ccp1(CCP_PWM);
    set_pwm1_duty(0);

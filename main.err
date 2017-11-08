@@ -1,5 +1,1 @@
->>> Warning 202 "main.c" Line 26(27,29): Variable never used:   ds
->>> Warning 202 "main.c" Line 41(24,25): Variable never used:   d
-      Memory usage:   ROM=20%      RAM=2% - 7%
-      0 Errors,  2 Warnings.
-Build Successful.
+*** Error 51 "main.c" Line 70(20,21): A numeric expression must appear here

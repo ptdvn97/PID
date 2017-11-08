@@ -1,4 +1,4 @@
-CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 08:22
+CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 09:20
 
                Filename:   C:\Users\Dung Phan\Documents\PID\main.lst
 
@@ -6215,10 +6215,10 @@ CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 08:22
 ....................    MAXCNT  = 65536; 
 0C56:  CLRF   F65
 0C58:  CLRF   F64
-....................    de_Pos = 800; 
-0C5A:  MOVLW  03
+....................    de_Pos = 700; 
+0C5A:  MOVLW  02
 0C5C:  MOVWF  09
-0C5E:  MOVLW  20
+0C5E:  MOVLW  BC
 0C60:  MOVWF  08
 ....................    setup_timer_2(T2_DIV_BY_16,255,1);// 244hz 
 0C62:  MOVLW  00
