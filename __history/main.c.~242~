@@ -48,7 +48,7 @@ void PID_Conf()
    PWM = PID;
    if (PWM > max_pwm) PWM = max_pwm;
    e = new_err;
-   set_pwm1_duty(PWM);
+   set_pwm1_duty((int16)PWM);
 }
 
 void main()

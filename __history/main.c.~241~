@@ -19,23 +19,23 @@ int16    MAXCNT;
 #define timer2_value 0.5
 
 signed int16 PID, new_err = 0, de_Pos=0, re_Pos=0,I=0,e=0,pwm=0;
-int8 value[4] = {0,0,0,0}; //1444
+int8 ini_vl[4] = {0,0,0,0}; //1444
 
 int16 xuatSo(int16 so)
 {
    unsigned int16 bien;
    
    bien = so;  // 1444
-   value[3] = bien %10;  //4
+   ini_vl[3] = bien %10;  //4
    
    bien = bien/10;
-   value[2] = bien%10;  //4
+   ini_vl[2] = bien%10;  //4
    
    bien = bien/10; 
-   value[1] = bien%10; // 4
+   ini_vl[1] = bien%10; // 4
    
    bien = bien/10;
-   value[0] = bien; // 1
+   ini_vl[0] = bien; // 1
 }
 
 void PID_Conf()
@@ -48,7 +48,7 @@ void PID_Conf()
    PWM = PID;
    if (PWM > max_pwm) PWM = max_pwm;
    e = new_err;
-   set_pwm1_duty(PWM);
+   set_pwm1_duty((int16)PWM);
 }
 
 void main()
@@ -56,7 +56,7 @@ void main()
    QEICON   = 0x18;
    POSCNT = 0;
    MAXCNT  = 65536;
-   de_Pos = 720;
+   de_Pos = 700;
    setup_timer_2(T2_DIV_BY_16,255,1);// 244hz
    setup_ccp1(CCP_PWM);
    set_pwm1_duty(0);
@@ -65,13 +65,13 @@ void main()
    xuatSo(de_Pos);
    lcd_gotoxy(1,1);
    lcd_putc('\f');
-   printf(lcd_putc,"Inital: %d%d%d%d",value[0],value[1],value[2],value[3]);
+   printf(lcd_putc,"Inital: %d%d%d%d",ini_vl[0],ini_vl[1],ini_vl[2],ini_vl[3]);
    while(TRUE)
    {
       re_Pos = POSCNT/4;
       xuatSo(re_Pos);
       lcd_gotoxy(1,2);
-      printf(lcd_putc,"Respond: %d%d%d%d",value[0],value[1],value[2],value[3]);
+      printf(lcd_putc,"Respond: %d%d%d%d",ini_vl[0],ini_vl[1],ini_vl[2],ini_vl[3]);
       PID_Conf();
    }
 }

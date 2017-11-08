@@ -1,4 +1,4 @@
-CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 13:45
+CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 13:53
 
                Filename:   C:\Users\Dung Phan\Documents\PID\main.lst
 
@@ -5853,7 +5853,7 @@ CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 13:45
 .................... #define timer2_value 0.5 
 ....................  
 .................... signed int16 PID, new_err = 0, de_Pos=0, re_Pos=0,I=0,e=0,pwm=0; 
-.................... int8 ini_vl[4] = {0,0,0,0}; //1444 
+.................... int8 value[4] = {0,0,0,0}; //1444 
 ....................  
 .................... int16 xuatSo(int16 so) 
 .................... { 
@@ -5863,7 +5863,7 @@ CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 13:45
 *
 0210:  MOVFF  17,19
 0214:  MOVFF  16,18
-....................    ini_vl[3] = bien %10;  //4 
+....................    value[3] = bien %10;  //4 
 0218:  MOVFF  19,1B
 021C:  MOVFF  18,1A
 0220:  CLRF   1D
@@ -5881,7 +5881,7 @@ CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 13:45
 023A:  RCALL  01CE
 023C:  MOVFF  02,19
 0240:  MOVFF  01,18
-....................    ini_vl[2] = bien%10;  //4 
+....................    value[2] = bien%10;  //4 
 0244:  MOVFF  19,1B
 0248:  MOVFF  18,1A
 024C:  CLRF   1D
@@ -5899,7 +5899,7 @@ CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 13:45
 0266:  RCALL  01CE
 0268:  MOVFF  02,19
 026C:  MOVFF  01,18
-....................    ini_vl[1] = bien%10; // 4 
+....................    value[1] = bien%10; // 4 
 0270:  MOVFF  19,1B
 0274:  MOVFF  18,1A
 0278:  CLRF   1D
@@ -5917,7 +5917,7 @@ CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 13:45
 0292:  RCALL  01CE
 0294:  MOVFF  02,19
 0298:  MOVFF  01,18
-....................    ini_vl[0] = bien; // 1 
+....................    value[0] = bien; // 1 
 029C:  MOVFF  18,12
 02A0:  RETURN 0
 .................... } 
@@ -6071,7 +6071,7 @@ CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 13:45
 ....................    e = new_err; 
 0B2E:  MOVFF  07,0F
 0B32:  MOVFF  06,0E
-....................    set_pwm1_duty((int16)PWM); 
+....................    set_pwm1_duty(PWM); 
 0B36:  MOVFF  11,02
 0B3A:  MOVFF  10,01
 0B3E:  RRCF   02,F
@@ -6125,10 +6125,10 @@ CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 13:45
 ....................    MAXCNT  = 65536; 
 0B96:  CLRF   F65
 0B98:  CLRF   F64
-....................    de_Pos = 700; 
+....................    de_Pos = 720; 
 0B9A:  MOVLW  02
 0B9C:  MOVWF  09
-0B9E:  MOVLW  BC
+0B9E:  MOVLW  D0
 0BA0:  MOVWF  08
 ....................    setup_timer_2(T2_DIV_BY_16,255,1);// 244hz 
 0BA2:  MOVLW  00
@@ -6162,7 +6162,7 @@ CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 13:45
 0BD6:  MOVLW  0C
 0BD8:  MOVWF  1C
 0BDA:  CALL   02E0
-....................    printf(lcd_putc,"Inital: %d%d%d%d",ini_vl[0],ini_vl[1],ini_vl[2],ini_vl[3]); 
+....................    printf(lcd_putc,"Inital: %d%d%d%d",value[0],value[1],value[2],value[3]); 
 0BDE:  MOVLW  18
 0BE0:  MOVWF  FF6
 0BE2:  MOVLW  00
@@ -6209,7 +6209,7 @@ CCS PCH C Compiler, Version 5.025, 5967               08-Nov-17 13:45
 0C46:  MOVLW  02
 0C48:  MOVWF  1E
 0C4A:  CALL   02A2
-....................       printf(lcd_putc,"Respond: %d%d%d%d",ini_vl[0],ini_vl[1],ini_vl[2],ini_vl[3]); 
+....................       printf(lcd_putc,"Respond: %d%d%d%d",value[0],value[1],value[2],value[3]); 
 0C4E:  MOVLW  2A
 0C50:  MOVWF  FF6
 0C52:  MOVLW  00

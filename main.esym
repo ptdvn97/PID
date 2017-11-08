@@ -1,8 +1,7 @@
-D G "timer2_value" 0 19 "0.5"
-D G "__PCH__" 0 82 ""5.025""
-D G "__DEVICE__" 0 82 "4431"
-D G "__DATE__" 0 82 ""08-Nov-17""
-D G "__TIME__" 0 82 ""13:45:15"" "Standard Header file for the PIC18F4431 device ////////////////"
+D G "__PCH__" 0 84 ""5.025""
+D G "__DEVICE__" 0 84 "4431"
+D G "__DATE__" 0 84 ""08-Nov-17""
+D G "__TIME__" 0 84 ""13:53:22"" "Standard Header file for the PIC18F4431 device ////////////////"
 c L "set_tris_a" 2 3 6 "FUNCTION"
 v L "value" 2 44 "int8" `54 
 f B "set_tris_a" 2 44 "void(int8 value)" `53 
@@ -1275,7 +1274,7 @@ V G "re_Pos" 0 21 "sint16" `848
 V G "i" 0 21 "sint16" `849 
 V G "e" 0 21 "sint16" `850 
 V G "pwm" 0 21 "sint16" `851 
-V G "ini_vl" 0 22 "int8[4]" `852 
+V G "value" 0 22 "int8[4]" `852 
 C L "xuatSo" 0 4 1 "FUNCTION"
 V L "so" 0 24 "int16" `854 
 F G "xuatSo" 0 25 "int16(int16 so)" `853 
