@@ -1,11 +1,11 @@
 
-ROM used:   3884/16384 (24%)
-            3884/16384 (24%) including unused fragments
+ROM used:   3940/16384 (24%)
+            3940/16384 (24%) including unused fragments
 
             1.1 Average locations per line
-            18.1 Average locations per statement
+            17.7 Average locations per statement
 
-RAM used:   36/768 (5%) at main() level
+RAM used:   37/768 (5%) at main() level
             56/768 (7%) worst case
 
 Stack used: 5 worst case (5 in main + 0 for interrupts)
@@ -13,13 +13,13 @@ Stack size: 31
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-  252   127  59  main.c
+  261   134  60  main.c
     8     0   0  main.h
   892     0   0  ..\..\..\..\Program Files (x86)\PICC\Devices\18F4431.h
-  249    88  41  ..\..\..\..\Program Files (x86)\PICC\Devices\lcd.h
+  249    88  40  ..\..\..\..\Program Files (x86)\PICC\Devices\lcd.h
  2229     0   0  ..\..\..\..\Program Files (x86)\PICC\Drivers\math.h
 ----- -----
- 3630   215 Total
+ 3639   222 Total
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
@@ -42,36 +42,36 @@ Page ROM  %  RAM    Vol Diff  Functions:
 0    180   2    2   1239  3.9  scanKey
 0    146   2    4    317  3.4  xuatSo
 0     66   1    5             @DIV1616
-0    520   7    4    509  5.6  PID_Config
+0    542   7    4    506  5.1  PID_Config
 0     82   1    6             @MULS1616
-0    198   3    8    789  7.6  nhapSo
-0     16   0    0             @const878
+0    194   2    7    759  7.6  nhapSo
+0     16   0    0             @const877
 0     34   0    2             @PSTRINGC_826
 0     30   0    5             @MUL1616
-0    362   5    0    787  3.8  MAIN
-0     18   0    0             @const887
+0    400   5    1   1059  4.8  MAIN
+0     18   0    0             @const886
 0     30   0    3             @PSTRINGCN_826
 0     40   1    3             @DIV88
 0    170   2    6             @PRINTF_D_826
-0     18   0    0             @const896
+0     18   0    0             @const895
  Inline         0             @cinit1
 
 Program metrics:
     Functions               14
-    Statements              215
+    Statements              222
     Comments                418
-    Volume (V)              10883
-    Difficulty (D)          56.2
-    Effort to implement (E) 611254
-    Time to implement (T)   9 hours, 26 minutes
+    Volume (V)              11219
+    Difficulty (D)          56.7
+    Effort to implement (E) 636522
+    Time to implement (T)   9 hours, 49 minutes
     Est Delivered Bugs (B)  2
-    Cyclomatic Complexity   31
-    Maintainability (MI)    133
+    Cyclomatic Complexity   32
+    Maintainability (MI)    132
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00002     4  0  
-00004-03FFE  3880  12500  
+00004-03FFE  3936  12444  
 
 
 

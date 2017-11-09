@@ -5,9 +5,9 @@
 // Lap trinh DK Encoder = PID
 // Nhap so tu Keypad roi nhan # de bat dau chay.
 // copy file lcd.h vào C:\Program Files (x86)\PICC\Devices
-// Nhan Button sau khi re_Pos = de_Pos de nhap lai gia tri de_Pos
-// re_Pos: gia tri that cua encoder.
-// de_Pos: gia tri xac lap.
+//
+//
+//
 //
 //
 //
@@ -147,7 +147,7 @@ int16 so = 0;
 
 
 
-void xuatSo(int16 number)
+int16 xuatSo(int16 number)
 {
    unsigned int16 temp;
    
@@ -167,7 +167,6 @@ void xuatSo(int16 number)
 void PID_Config()
 {
    new_err = de_Pos - re_Pos;
-   new_err = abs(new_err);
    PID = Kp*new_err;
    I  = e + new_err;
    PID = PID + Ki*I;
@@ -175,13 +174,14 @@ void PID_Config()
    PWM = PID;
    if (PWM > max_pwm) PWM = max_pwm;
    e = new_err;
-   if(de_Pos > re_Pos)
+   if(new_err >= 0)
    {
       set_pwm1_duty(PWM);
       set_pwm2_duty(0);
    }
    else
    {
+    PWM = abs(PWM);
     set_pwm2_duty(PWM);
     set_pwm1_duty(0);
    }
@@ -189,7 +189,7 @@ void PID_Config()
 
 void nhapSo()
 {  
-   int8 Key=0, tam, index=15;
+   int8 Key=0, tam, index=15,index2=0;
    int16 so=0;
    lcd_init();
    lcd_gotoxy(1,index);
@@ -249,8 +249,6 @@ void main()
          if(input(PIN_C3)==0)
          {
             nhapSo();
-            new_err = 0,I=0,e=0,pwm=0;
-            PID_Config();
          }
       }
    }
