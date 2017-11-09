@@ -1,9 +1,9 @@
-CCS PCH C Compiler, Version 5.025, 5967               09-Nov-17 16:23
+CCS PCH C Compiler, Version 5.025, 5967               09-Nov-17 18:08
 
                Filename:   C:\Users\Dung Phan\Documents\PID\main.lst
 
-               ROM used:   3930 bytes (24%)
-                           Largest free fragment is 12454
+               ROM used:   3934 bytes (24%)
+                           Largest free fragment is 12450
                RAM used:   37 (5%) at main() level
                            56 (7%) worst case
                Stack used: 5 locations
@@ -13,7 +13,7 @@ CCS PCH C Compiler, Version 5.025, 5967               09-Nov-17 16:23
 0000:  GOTO   0DCA
 .................... // 
 .................... // 
-.................... // 
+.................... // Luu y: 
 .................... // 
 .................... // Lap trinh DK Encoder = PID 
 .................... // Nhap so tu Keypad roi nhan # de bat dau chay. 
@@ -21,8 +21,8 @@ CCS PCH C Compiler, Version 5.025, 5967               09-Nov-17 16:23
 .................... // Nhan Button sau khi re_Pos = de_Pos de nhap lai gia tri de_Pos 
 .................... // re_Pos: gia tri that cua encoder. 
 .................... // de_Pos: gia tri xac lap. 
-.................... // 
-.................... // 
+.................... // Chinh tan so chip 18F4431 la 4MHz, encoder 360 pulse/rev 
+.................... // Su dung file Simulation trong folder PID. 
 .................... // 
 .................... // 
 .................... #include <main.h> 
@@ -6596,158 +6596,161 @@ CCS PCH C Compiler, Version 5.025, 5967               09-Nov-17 16:23
 0E28:  CLRF   20
 0E2A:  CLRF   21
 .................... { 
+....................    output_bit(PIN_B0,1); 
+0E2C:  BSF    F8A.0
+0E2E:  BCF    F93.0
 ....................    nhapSo(); 
-0E2C:  CALL   03A6
+0E30:  CALL   03A6
 ....................    QEICON   = 0x18; 
-0E30:  MOVLW  18
-0E32:  MOVWF  FB6
+0E34:  MOVLW  18
+0E36:  MOVWF  FB6
 ....................    POSCNT = 0; 
-0E34:  CLRF   F67
-0E36:  CLRF   F66
+0E38:  CLRF   F67
+0E3A:  CLRF   F66
 ....................    MAXCNT  = 65536; 
-0E38:  CLRF   F65
-0E3A:  CLRF   F64
+0E3C:  CLRF   F65
+0E3E:  CLRF   F64
 ....................    scanCol(); 
-0E3C:  CALL   02B8
+0E40:  CALL   02B8
 ....................    setup_timer_2(T2_DIV_BY_4,255,1);// 244hz 
-0E40:  MOVLW  00
-0E42:  IORLW  05
-0E44:  MOVWF  FCA
-0E46:  MOVLW  FF
-0E48:  MOVWF  FCB
+0E44:  MOVLW  00
+0E46:  IORLW  05
+0E48:  MOVWF  FCA
+0E4A:  MOVLW  FF
+0E4C:  MOVWF  FCB
 ....................    setup_ccp1(CCP_PWM); 
-0E4A:  BCF    F94.2
-0E4C:  BCF    F8B.2
-0E4E:  MOVLW  0C
-0E50:  MOVWF  FBD
+0E4E:  BCF    F94.2
+0E50:  BCF    F8B.2
+0E52:  MOVLW  0C
+0E54:  MOVWF  FBD
 ....................    set_pwm1_duty(0); 
-0E52:  CLRF   FBE
+0E56:  CLRF   FBE
 ....................    setup_ccp2(CCP_PWM); 
-0E54:  BCF    F94.1
-0E56:  BCF    F8B.1
-0E58:  MOVWF  FBA
+0E58:  BCF    F94.1
+0E5A:  BCF    F8B.1
+0E5C:  MOVWF  FBA
 ....................    set_pwm2_duty(0); 
-0E5A:  CLRF   FBB
+0E5E:  CLRF   FBB
 ....................    lcd_init(); 
-0E5C:  CALL   0180
+0E60:  CALL   0180
 ....................    xuatSo(de_Pos); 
-0E60:  MOVFF  15,25
-0E64:  MOVFF  14,24
-0E68:  CALL   04A0
+0E64:  MOVFF  15,25
+0E68:  MOVFF  14,24
+0E6C:  CALL   04A0
 ....................    lcd_gotoxy(1,1); 
-0E6C:  MOVLW  01
-0E6E:  MOVWF  2C
-0E70:  MOVWF  2D
-0E72:  CALL   01DC
+0E70:  MOVLW  01
+0E72:  MOVWF  2C
+0E74:  MOVWF  2D
+0E76:  CALL   01DC
 ....................    lcd_putc('\f'); 
-0E76:  MOVLW  0C
-0E78:  MOVWF  2B
-0E7A:  CALL   021A
+0E7A:  MOVLW  0C
+0E7C:  MOVWF  2B
+0E7E:  CALL   021A
 ....................    printf(lcd_putc,"Initial: %d%d%d%d",value[0],value[1],value[2],value[3]); 
-0E7E:  MOVLW  28
-0E80:  MOVWF  FF6
-0E82:  MOVLW  00
-0E84:  MOVWF  FF7
-0E86:  MOVLW  09
-0E88:  MOVWF  24
-0E8A:  CALL   0532
-0E8E:  MOVFF  1E,24
-0E92:  MOVLW  18
-0E94:  MOVWF  25
-0E96:  CALL   0578
-0E9A:  MOVFF  1F,24
-0E9E:  MOVLW  18
-0EA0:  MOVWF  25
-0EA2:  CALL   0578
-0EA6:  MOVFF  20,24
-0EAA:  MOVLW  18
-0EAC:  MOVWF  25
-0EAE:  CALL   0578
-0EB2:  MOVFF  21,24
-0EB6:  MOVLW  18
-0EB8:  MOVWF  25
-0EBA:  CALL   0578
+0E82:  MOVLW  28
+0E84:  MOVWF  FF6
+0E86:  MOVLW  00
+0E88:  MOVWF  FF7
+0E8A:  MOVLW  09
+0E8C:  MOVWF  24
+0E8E:  CALL   0532
+0E92:  MOVFF  1E,24
+0E96:  MOVLW  18
+0E98:  MOVWF  25
+0E9A:  CALL   0578
+0E9E:  MOVFF  1F,24
+0EA2:  MOVLW  18
+0EA4:  MOVWF  25
+0EA6:  CALL   0578
+0EAA:  MOVFF  20,24
+0EAE:  MOVLW  18
+0EB0:  MOVWF  25
+0EB2:  CALL   0578
+0EB6:  MOVFF  21,24
+0EBA:  MOVLW  18
+0EBC:  MOVWF  25
+0EBE:  CALL   0578
 ....................    while(TRUE) 
 ....................    {   
 ....................       re_Pos = POSCNT/4; 
-0EBE:  RRCF   F67,W
-0EC0:  MOVWF  03
-0EC2:  RRCF   F66,W
-0EC4:  MOVWF  02
-0EC6:  RRCF   03,F
-0EC8:  RRCF   02,F
-0ECA:  MOVLW  3F
-0ECC:  ANDWF  03,F
-0ECE:  MOVFF  02,16
-0ED2:  MOVFF  03,17
+0EC2:  RRCF   F67,W
+0EC4:  MOVWF  03
+0EC6:  RRCF   F66,W
+0EC8:  MOVWF  02
+0ECA:  RRCF   03,F
+0ECC:  RRCF   02,F
+0ECE:  MOVLW  3F
+0ED0:  ANDWF  03,F
+0ED2:  MOVFF  02,16
+0ED6:  MOVFF  03,17
 ....................       xuatSo(re_Pos); 
-0ED6:  MOVFF  17,25
-0EDA:  MOVFF  16,24
-0EDE:  CALL   04A0
+0EDA:  MOVFF  17,25
+0EDE:  MOVFF  16,24
+0EE2:  CALL   04A0
 ....................       lcd_gotoxy(1,2); 
-0EE2:  MOVLW  01
-0EE4:  MOVWF  2C
-0EE6:  MOVLW  02
-0EE8:  MOVWF  2D
-0EEA:  CALL   01DC
+0EE6:  MOVLW  01
+0EE8:  MOVWF  2C
+0EEA:  MOVLW  02
+0EEC:  MOVWF  2D
+0EEE:  CALL   01DC
 ....................       printf(lcd_putc,"Respond: %d%d%d%d",value[0],value[1],value[2],value[3]); 
-0EEE:  MOVLW  3A
-0EF0:  MOVWF  FF6
-0EF2:  MOVLW  00
-0EF4:  MOVWF  FF7
-0EF6:  MOVLW  09
-0EF8:  MOVWF  24
-0EFA:  CALL   0532
-0EFE:  MOVFF  1E,24
-0F02:  MOVLW  18
-0F04:  MOVWF  25
-0F06:  CALL   0578
-0F0A:  MOVFF  1F,24
-0F0E:  MOVLW  18
-0F10:  MOVWF  25
-0F12:  CALL   0578
-0F16:  MOVFF  20,24
-0F1A:  MOVLW  18
-0F1C:  MOVWF  25
-0F1E:  CALL   0578
-0F22:  MOVFF  21,24
-0F26:  MOVLW  18
-0F28:  MOVWF  25
-0F2A:  CALL   0578
+0EF2:  MOVLW  3A
+0EF4:  MOVWF  FF6
+0EF6:  MOVLW  00
+0EF8:  MOVWF  FF7
+0EFA:  MOVLW  09
+0EFC:  MOVWF  24
+0EFE:  CALL   0532
+0F02:  MOVFF  1E,24
+0F06:  MOVLW  18
+0F08:  MOVWF  25
+0F0A:  CALL   0578
+0F0E:  MOVFF  1F,24
+0F12:  MOVLW  18
+0F14:  MOVWF  25
+0F16:  CALL   0578
+0F1A:  MOVFF  20,24
+0F1E:  MOVLW  18
+0F20:  MOVWF  25
+0F22:  CALL   0578
+0F26:  MOVFF  21,24
+0F2A:  MOVLW  18
+0F2C:  MOVWF  25
+0F2E:  CALL   0578
 ....................       PID_Config(); 
-0F2E:  RCALL  0BAC
+0F32:  RCALL  0BAC
 ....................       while(new_err==0) 
-0F30:  MOVF   12,F
-0F32:  BNZ   0F56
-0F34:  MOVF   13,F
-0F36:  BNZ   0F56
+0F34:  MOVF   12,F
+0F36:  BNZ   0F5A
+0F38:  MOVF   13,F
+0F3A:  BNZ   0F5A
 ....................       { 
 ....................          if(input(PIN_C3)==0) 
-0F38:  BSF    F94.3
-0F3A:  BTFSC  F82.3
-0F3C:  BRA    0F54
+0F3C:  BSF    F94.3
+0F3E:  BTFSC  F82.3
+0F40:  BRA    0F58
 ....................          { 
 ....................             nhapSo(); 
-0F3E:  CALL   03A6
+0F42:  CALL   03A6
 ....................             new_err = 0,I=0,e=0,pwm=0; 
-0F42:  CLRF   13
-0F44:  CLRF   12
-0F46:  CLRF   19
-0F48:  CLRF   18
-0F4A:  CLRF   1B
-0F4C:  CLRF   1A
-0F4E:  CLRF   1D
-0F50:  CLRF   1C
+0F46:  CLRF   13
+0F48:  CLRF   12
+0F4A:  CLRF   19
+0F4C:  CLRF   18
+0F4E:  CLRF   1B
+0F50:  CLRF   1A
+0F52:  CLRF   1D
+0F54:  CLRF   1C
 ....................             PID_Config(); 
-0F52:  RCALL  0BAC
+0F56:  RCALL  0BAC
 ....................          } 
-0F54:  BRA    0F30
+0F58:  BRA    0F34
 ....................       } 
-0F56:  BRA    0EBE
+0F5A:  BRA    0EC2
 ....................    } 
 .................... } 
 ....................  
-0F58:  SLEEP 
+0F5C:  SLEEP 
 ....................  
 ....................  
 

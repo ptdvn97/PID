@@ -1,6 +1,6 @@
 //
 //
-//
+// Luu y:
 //
 // Lap trinh DK Encoder = PID
 // Nhap so tu Keypad roi nhan # de bat dau chay.
@@ -8,8 +8,8 @@
 // Nhan Button sau khi re_Pos = de_Pos de nhap lai gia tri de_Pos
 // re_Pos: gia tri that cua encoder.
 // de_Pos: gia tri xac lap.
-//
-//
+// Chinh tan so chip 18F4431 la 4MHz, encoder 360 pulse/rev
+// Su dung file Simulation trong folder PID.
 //
 //
 #include <main.h>
@@ -221,6 +221,7 @@ void nhapSo()
 
 void main()
 {
+   output_bit(PIN_B0,1);
    nhapSo();
    QEICON   = 0x18;
    POSCNT = 0;

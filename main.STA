@@ -1,9 +1,9 @@
 
-ROM used:   3930/16384 (24%)
-            3930/16384 (24%) including unused fragments
+ROM used:   3934/16384 (24%)
+            3934/16384 (24%) including unused fragments
 
             1.1 Average locations per line
-            17.8 Average locations per statement
+            17.7 Average locations per statement
 
 RAM used:   37/768 (5%) at main() level
             56/768 (7%) worst case
@@ -13,13 +13,13 @@ Stack size: 31
 
 Lines Stmts  %   Files
 ----- ----- ---  -----
-  260   133  60  main.c
+  261   134  60  main.c
     8     0   0  main.h
   892     0   0  ..\..\..\..\Program Files (x86)\PICC\Devices\18F4431.h
   249    88  40  ..\..\..\..\Program Files (x86)\PICC\Devices\lcd.h
  2229     0   0  ..\..\..\..\Program Files (x86)\PICC\Drivers\math.h
 ----- -----
- 3638   221 Total
+ 3639   222 Total
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
@@ -48,7 +48,7 @@ Page ROM  %  RAM    Vol Diff  Functions:
 0     16   0    0             @const877
 0     34   0    2             @PSTRINGC_826
 0     30   0    5             @MUL1616
-0    400   5    1   1059  4.8  MAIN
+0    404   5    1   1106  4.8  MAIN
 0     18   0    0             @const886
 0     30   0    3             @PSTRINGCN_826
 0     40   1    3             @DIV88
@@ -58,12 +58,12 @@ Page ROM  %  RAM    Vol Diff  Functions:
 
 Program metrics:
     Functions               14
-    Statements              221
+    Statements              222
     Comments                418
-    Volume (V)              11155
+    Volume (V)              11219
     Difficulty (D)          56.7
-    Effort to implement (E) 632614
-    Time to implement (T)   9 hours, 46 minutes
+    Effort to implement (E) 636522
+    Time to implement (T)   9 hours, 49 minutes
     Est Delivered Bugs (B)  2
     Cyclomatic Complexity   32
     Maintainability (MI)    132
@@ -71,7 +71,7 @@ Program metrics:
  Segment     Used  Free
 -----------  ----  ----
 00000-00002     4  0  
-00004-03FFE  3926  12454  
+00004-03FFE  3930  12450  
 
 
 
