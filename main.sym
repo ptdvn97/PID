@@ -167,13 +167,13 @@ Project Directory:
     C:\Users\Dung Phan\Documents\PID\
 
 Project Files:
-    main.c                                                  [09-Nov-17 10:26  CRC=3A63A35C]
+    main.c                                                  [09-Nov-17 15:14  CRC=12BB6F79]
     main.h                                                  [08-Nov-17 07:10  CRC=00000000]
     ..\..\..\..\Program Files (x86)\PICC\Devices\18F4431.h  [12-Nov-13 14:35  CRC=82CE54B8]
     ..\..\..\..\Program Files (x86)\PICC\Devices\lcd.h      [06-Nov-17 22:04  CRC=FA7899CF]
     ..\..\..\..\Program Files (x86)\PICC\Drivers\math.h     [28-Sep-12 11:35  CRC=546412C9]
 
-Source signature=6072B775
+Source signature=38CA8392
 
 Units:
     main (main)

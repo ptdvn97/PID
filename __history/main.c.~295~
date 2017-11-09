@@ -227,7 +227,7 @@ void main()
    POSCNT = 0;
    MAXCNT  = 65536;
    scanCol();
-   setup_timer_2(T2_DIV_BY_4,255,1);// 244hz
+   setup_timer_2(T2_DIV_BY_16,255,1);// 244hz
    setup_ccp1(CCP_PWM);
    set_pwm1_duty(0);
    setup_ccp2(CCP_PWM);
@@ -236,7 +236,7 @@ void main()
    xuatSo(de_Pos);
    lcd_gotoxy(1,1);
    lcd_putc('\f');
-   printf(lcd_putc,"Initial: %d%d%d%d",value[0],value[1],value[2],value[3]);
+   printf(lcd_putc,"Inital: %d%d%d%d",value[0],value[1],value[2],value[3]);
    while(TRUE)
    {  
       re_Pos = POSCNT/4;

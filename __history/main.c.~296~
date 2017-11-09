@@ -236,7 +236,7 @@ void main()
    xuatSo(de_Pos);
    lcd_gotoxy(1,1);
    lcd_putc('\f');
-   printf(lcd_putc,"Initial: %d%d%d%d",value[0],value[1],value[2],value[3]);
+   printf(lcd_putc,"Inital: %d%d%d%d",value[0],value[1],value[2],value[3]);
    while(TRUE)
    {  
       re_Pos = POSCNT/4;

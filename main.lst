@@ -1,4 +1,4 @@
-CCS PCH C Compiler, Version 5.025, 5967               09-Nov-17 10:26
+CCS PCH C Compiler, Version 5.025, 5967               09-Nov-17 16:03
 
                Filename:   C:\Users\Dung Phan\Documents\PID\main.lst
 
@@ -58,13 +58,13 @@ CCS PCH C Compiler, Version 5.025, 5967               09-Nov-17 10:26
 0026:  DATA 20,00
 0028:  DATA 49,6E
 002A:  DATA 69,74
-002C:  DATA 61,6C
-002E:  DATA 3A,20
-0030:  DATA 25,64
-0032:  DATA 25,64
-0034:  DATA 25,64
-0036:  DATA 25,64
-0038:  DATA 00,00
+002C:  DATA 69,61
+002E:  DATA 6C,3A
+0030:  DATA 20,25
+0032:  DATA 64,25
+0034:  DATA 64,25
+0036:  DATA 64,25
+0038:  DATA 64,00
 003A:  DATA 52,65
 003C:  DATA 73,70
 003E:  DATA 6F,6E
@@ -6614,9 +6614,9 @@ CCS PCH C Compiler, Version 5.025, 5967               09-Nov-17 10:26
 0E44:  CLRF   F64
 ....................    scanCol(); 
 0E46:  CALL   02B8
-....................    setup_timer_2(T2_DIV_BY_16,255,1);// 244hz 
+....................    setup_timer_2(T2_DIV_BY_4,255,1);// 244hz 
 0E4A:  MOVLW  00
-0E4C:  IORLW  06
+0E4C:  IORLW  05
 0E4E:  MOVWF  FCA
 0E50:  MOVLW  FF
 0E52:  MOVWF  FCB
@@ -6648,12 +6648,12 @@ CCS PCH C Compiler, Version 5.025, 5967               09-Nov-17 10:26
 0E80:  MOVLW  0C
 0E82:  MOVWF  2B
 0E84:  CALL   021A
-....................    printf(lcd_putc,"Inital: %d%d%d%d",value[0],value[1],value[2],value[3]); 
+....................    printf(lcd_putc,"Initial: %d%d%d%d",value[0],value[1],value[2],value[3]); 
 0E88:  MOVLW  28
 0E8A:  MOVWF  FF6
 0E8C:  MOVLW  00
 0E8E:  MOVWF  FF7
-0E90:  MOVLW  08
+0E90:  MOVLW  09
 0E92:  MOVWF  24
 0E94:  CALL   053C
 0E98:  MOVFF  1E,24
