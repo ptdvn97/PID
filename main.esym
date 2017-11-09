@@ -1,7 +1,7 @@
-D G "__PCH__" 0 0 ""5.025""
-D G "__DEVICE__" 0 0 ""
-D G "__DATE__" 0 0 ""08-Nov-17""
-D G "__TIME__" 0 0 ""21:54:39"" "Lap trinh DK Encoder = PID"
+D G "__PCH__" 0 253 ""5.025""
+D G "__DEVICE__" 0 253 "4431"
+D G "__DATE__" 0 253 ""09-Nov-17""
+D G "__TIME__" 0 253 ""09:47:58"" "Lap trinh DK Encoder = PID"
 c L "set_tris_a" 2 1 6 "FUNCTION"
 v L "value" 2 44 "int8" `54 
 f B "set_tris_a" 2 44 "void(int8 value)" `53 
@@ -1265,7 +1265,7 @@ V G "MAXCNT" 0 25 "int16" `842
 D G "Kp" 0 30 "10"
 D G "Ki" 0 31 "0.1"
 D G "Kd" 0 32 "0.01"
-D G "max_pwm" 0 33 "1000"
+D G "max_pwm" 0 33 "1023"
 D G "timer2_value" 0 34 "0.5"
 D G "COT_1" 0 36 "PIN_D4"
 D G "COT_2" 0 37 "PIN_D5"

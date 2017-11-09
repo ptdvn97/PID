@@ -174,7 +174,7 @@ void PID_Config()
    PWM = PID;
    if (PWM > max_pwm) PWM = max_pwm;
    e = new_err;
-   if(new_err >= 0)
+   if(new_err > 0)
    {
       set_pwm1_duty(PWM);
       set_pwm2_duty(0);

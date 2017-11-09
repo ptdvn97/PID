@@ -30,7 +30,7 @@ int16    MAXCNT;
 #define Kp        10
 #define Ki        0.1
 #define Kd        0.01
-#define max_pwm   1023
+#define max_pwm   100000
 #define timer2_value 0.5
 //Config matrix 4x3
 #define COT_1 PIN_D4
@@ -174,7 +174,7 @@ void PID_Config()
    PWM = PID;
    if (PWM > max_pwm) PWM = max_pwm;
    e = new_err;
-   if(new_err >= 0)
+   if(new_err > 0)
    {
       set_pwm1_duty(PWM);
       set_pwm2_duty(0);
