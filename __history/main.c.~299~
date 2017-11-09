@@ -192,6 +192,7 @@ void nhapSo()
    int8 Key=0, tam, index=15;
    int16 so=0;
    lcd_init();
+   lcd_gotoxy(1,index);
    lcd_putc('\f');
    printf(lcd_putc,"Desired value: ");
    scanCol();

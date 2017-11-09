@@ -1,7 +1,7 @@
 D G "__PCH__" 0 0 ""5.025""
 D G "__DEVICE__" 0 0 ""
 D G "__DATE__" 0 0 ""09-Nov-17""
-D G "__TIME__" 0 0 ""16:03:06"" "Lap trinh DK Encoder = PID"
+D G "__TIME__" 0 0 ""16:23:30"" "Lap trinh DK Encoder = PID"
 c L "set_tris_a" 2 1 6 "FUNCTION"
 v L "value" 2 44 "int8" `54 
 f B "set_tris_a" 2 44 "void(int8 value)" `53 
@@ -1303,7 +1303,7 @@ V L "tam" 0 192 "int8" `874
 V L "index" 0 192 "int8" `875 
 V L "so" 0 193 "int16" `876 
 C L "nhapSo" 0 18 1 "FUNCTION"
-F G "MAIN" 0 224 "void()" `883 
+F G "MAIN" 0 223 "void()" `883 
 C L "MAIN" 0 18 1 "FUNCTION"
 F B "reset_cpu" 0 0
 F B "abs" 1 0

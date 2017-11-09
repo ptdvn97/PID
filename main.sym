@@ -147,33 +147,33 @@ ROM Allocation:
 0002D4  scanKey
 000388  @MUL1616
 0003A6  nhapSo
-000468  @DIV1616
-0004AA  xuatSo
-00053C  @PSTRINGCN_826
-00055A  @DIV88
-000582  @PRINTF_D_826
-00062C  @MULS1616
-00067E  @SITOF
-0006C6  @MULFF
-0007B8  @ADDFF
-000A22  @SFTOI
-000A5A  @DIVFF
-000BB6  PID_Config
-000DD4  @cinit1
-000DD4  MAIN
-000DFE  @cinit2
+00045E  @DIV1616
+0004A0  xuatSo
+000532  @PSTRINGCN_826
+000550  @DIV88
+000578  @PRINTF_D_826
+000622  @MULS1616
+000674  @SITOF
+0006BC  @MULFF
+0007AE  @ADDFF
+000A18  @SFTOI
+000A50  @DIVFF
+000BAC  PID_Config
+000DCA  @cinit1
+000DCA  MAIN
+000DF4  @cinit2
 
 Project Directory:
     C:\Users\Dung Phan\Documents\PID\
 
 Project Files:
-    main.c                                                  [09-Nov-17 15:14  CRC=12BB6F79]
+    main.c                                                  [09-Nov-17 16:23  CRC=A2CB001C]
     main.h                                                  [08-Nov-17 07:10  CRC=00000000]
     ..\..\..\..\Program Files (x86)\PICC\Devices\18F4431.h  [12-Nov-13 14:35  CRC=82CE54B8]
     ..\..\..\..\Program Files (x86)\PICC\Devices\lcd.h      [06-Nov-17 22:04  CRC=FA7899CF]
     ..\..\..\..\Program Files (x86)\PICC\Drivers\math.h     [28-Sep-12 11:35  CRC=546412C9]
 
-Source signature=38CA8392
+Source signature=C8DA1435
 
 Units:
     main (main)
