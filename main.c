@@ -27,10 +27,10 @@ int16    MAXCNT;
 #byte    MAXCNTH= 0xF65
 #byte    MAXCNTL= 0xF64
 //Config PID
-#define Kp        10
-#define Ki        0.1
+#define Kp        5
+#define Ki        1
 #define Kd        0.01
-#define max_pwm   1023
+#define max_pwm   350
 #define timer2_value 0.5
 //Config matrix 4x3
 #define COT_1 PIN_D4
@@ -175,7 +175,7 @@ void PID_Config()
    PWM = PID;
    if (PWM > max_pwm) PWM = max_pwm;
    e = new_err;
-   if(de_Pos > re_Pos)
+   if(de_Pos >= re_Pos)
    {
       set_pwm1_duty(PWM);
       set_pwm2_duty(0);
@@ -227,7 +227,7 @@ void main()
    POSCNT = 0;
    MAXCNT  = 65536;
    scanCol();
-   setup_timer_2(T2_DIV_BY_4,255,1);// 244hz
+   setup_timer_2(T2_DIV_BY_16,255,1);// 244hz
    setup_ccp1(CCP_PWM);
    set_pwm1_duty(0);
    setup_ccp2(CCP_PWM);

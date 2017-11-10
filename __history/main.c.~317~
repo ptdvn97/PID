@@ -1,3 +1,17 @@
+//
+//
+// Luu y:
+//
+// Lap trinh DK Encoder = PID
+// Nhap so tu Keypad roi nhan # de bat dau chay.
+// copy file lcd.h vào C:\Program Files (x86)\PICC\Devices
+// Nhan Button sau khi re_Pos = de_Pos de nhap lai gia tri de_Pos
+// re_Pos: gia tri that cua encoder.
+// de_Pos: gia tri xac lap.
+// Chinh tan so chip 18F4431 la 4MHz, encoder 360 pulse/rev
+// Su dung file Simulation trong folder PID.
+//
+//
 #include <main.h>
 #include <lcd.h>
 #include <math.h>
@@ -14,10 +28,10 @@ int16    MAXCNT;
 #byte    MAXCNTL= 0xF64
 //Config PID
 #define Kp        10
-#define Ki        0.1
+#define Ki        0.3
 #define Kd        0.01
-#define max_pwm   1000
-#define timer2_value 0.5
+#define max_pwm   400
+#define timer2_value 0.25
 //Config matrix 4x3
 #define COT_1 PIN_D4
 #define COT_2 PIN_D5
@@ -133,7 +147,7 @@ int16 so = 0;
 
 
 
-int16 xuatSo(int16 number)
+void xuatSo(int16 number)
 {
    unsigned int16 temp;
    
@@ -153,6 +167,7 @@ int16 xuatSo(int16 number)
 void PID_Config()
 {
    new_err = de_Pos - re_Pos;
+   new_err = abs(new_err);
    PID = Kp*new_err;
    I  = e + new_err;
    PID = PID + Ki*I;
@@ -160,12 +175,54 @@ void PID_Config()
    PWM = PID;
    if (PWM > max_pwm) PWM = max_pwm;
    e = new_err;
-   set_pwm1_duty(PWM);
+   if(de_Pos >= re_Pos)
+   {
+      set_pwm1_duty(PWM);
+      set_pwm2_duty(0);
+   }
+   else
+   {
+    set_pwm2_duty(PWM);
+    set_pwm1_duty(0);
+   }
+}
+
+void nhapSo()
+{  
+   int8 Key=0, tam, index=15;
+   int16 so=0;
+   lcd_init();
+   lcd_putc('\f');
+   printf(lcd_putc,"Desired value: ");
+   scanCol();
+   while(TRUE)
+   {
+      Key=scanKey();
+      if(Key!=0)
+      {
+         if(Key == 12)
+         {
+            break;
+         }
+         tam=Key;
+         if(Key != 11)
+         so = so*10 + Key;
+         else
+         so = so*10;
+         lcd_gotoxy(index,1);
+         printf(lcd_putc,"%c",phimnhan[tam-1]); // hien thi phim nhan
+         index++;
+         while(scanKey()!=0)
+         {delay_ms(5);}
+         de_Pos = so;
+      }
+   }
 }
 
 void main()
 {
-   
+   output_bit(PIN_B0,1);
+   nhapSo();
    QEICON   = 0x18;
    POSCNT = 0;
    MAXCNT  = 65536;
@@ -174,11 +231,12 @@ void main()
    setup_ccp1(CCP_PWM);
    set_pwm1_duty(0);
    setup_ccp2(CCP_PWM);
+   set_pwm2_duty(0);
    lcd_init();
    xuatSo(de_Pos);
    lcd_gotoxy(1,1);
    lcd_putc('\f');
-   printf(lcd_putc,"Inital: %d%d%d%d",value[0],value[1],value[2],value[3]);
+   printf(lcd_putc,"Initial: %d%d%d%d",value[0],value[1],value[2],value[3]);
    while(TRUE)
    {  
       re_Pos = POSCNT/4;
@@ -186,6 +244,15 @@ void main()
       lcd_gotoxy(1,2);
       printf(lcd_putc,"Respond: %d%d%d%d",value[0],value[1],value[2],value[3]);
       PID_Config();
+      while(new_err==0)
+      {
+         if(input(PIN_C3)==0)
+         {
+            nhapSo();
+            new_err = 0,I=0,e=0,pwm=0;
+            PID_Config();
+         }
+      }
    }
 }
 

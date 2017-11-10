@@ -1,8 +1,8 @@
 D G "HANG_4" 0 42 "input(PIN_D3)"
 D G "__PCH__" 0 262 ""5.025""
 D G "__DEVICE__" 0 262 "4431"
-D G "__DATE__" 0 262 ""09-Nov-17""
-D G "__TIME__" 0 262 ""18:08:34"" "Luu y:"
+D G "__DATE__" 0 262 ""10-Nov-17""
+D G "__TIME__" 0 262 ""08:45:00"" "Luu y:"
 c L "set_tris_a" 2 1 6 "FUNCTION"
 v L "value" 2 44 "int8" `54 
 f B "set_tris_a" 2 44 "void(int8 value)" `53 
@@ -1263,10 +1263,10 @@ C L "lcd_putc" 3 12 1 "FUNCTION"
 C L "lcd_putc" 3 12 1 "FUNCTION"
 V G "POSCNT" 0 21 "int16" `839 
 V G "MAXCNT" 0 25 "int16" `842 
-D G "Kp" 0 30 "10"
-D G "Ki" 0 31 "0.1"
+D G "Kp" 0 30 "5"
+D G "Ki" 0 31 "1"
 D G "Kd" 0 32 "0.01"
-D G "max_pwm" 0 33 "1023"
+D G "max_pwm" 0 33 "350"
 D G "timer2_value" 0 34 "0.5"
 D G "COT_1" 0 36 "PIN_D4"
 D G "COT_2" 0 37 "PIN_D5"

@@ -1,9 +1,9 @@
 
-ROM used:   3934/16384 (24%)
-            3934/16384 (24%) including unused fragments
+ROM used:   3828/16384 (23%)
+            3828/16384 (23%) including unused fragments
 
             1.1 Average locations per line
-            17.7 Average locations per statement
+            17.2 Average locations per statement
 
 RAM used:   37/768 (5%) at main() level
             56/768 (7%) worst case
@@ -23,10 +23,10 @@ Lines Stmts  %   Files
 
 Page ROM  %  RAM    Vol Diff  Functions:
 ---- --- --- ---    --- ----  ----------
-0     56   1    4             @SFTOI
-0    242   3   11             @MULFF
-0    618   8   16             @ADDFF
-0    348   4   14             @DIVFF
+0     58   1    4             @SFTOI
+0    244   3   11             @MULFF
+0    620   8   16             @ADDFF
+0    348   5   14             @DIVFF
 0     72   1    2             @SITOF
 0     26   0    1             @delay_ms2
 0     20   0    0             @const828
@@ -42,8 +42,8 @@ Page ROM  %  RAM    Vol Diff  Functions:
 0    180   2    2   1239  3.9  scanKey
 0    146   2    4    317  3.4  xuatSo
 0     66   1    5             @DIV1616
-0    542   7    4    506  5.1  PID_Config
-0     82   1    6             @MULS1616
+0    430   6    4    509  5.6  PID_Config
+0     82   1    6    715  7.5  @MULS1616
 0    184   2    7    715  7.5  nhapSo
 0     16   0    0             @const877
 0     34   0    2             @PSTRINGC_826
@@ -57,21 +57,21 @@ Page ROM  %  RAM    Vol Diff  Functions:
  Inline         0             @cinit1
 
 Program metrics:
-    Functions               14
+    Functions               15
     Statements              222
     Comments                418
-    Volume (V)              11219
-    Difficulty (D)          56.7
-    Effort to implement (E) 636522
-    Time to implement (T)   9 hours, 49 minutes
-    Est Delivered Bugs (B)  2
-    Cyclomatic Complexity   32
-    Maintainability (MI)    132
+    Volume (V)              12501
+    Difficulty (D)          64.8
+    Effort to implement (E) 810123
+    Time to implement (T)   12 hours, 30 minutes
+    Est Delivered Bugs (B)  3
+    Cyclomatic Complexity   35
+    Maintainability (MI)    139
 
  Segment     Used  Free
 -----------  ----  ----
 00000-00002     4  0  
-00004-03FFE  3930  12450  
+00004-03FFE  3824  12556  
 
 
 
